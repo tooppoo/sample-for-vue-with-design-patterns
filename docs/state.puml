@@ -1,0 +1,13 @@
+@startuml State Pattern
+class TodoList
+class TodoTask
+
+interface TaskState
+
+TaskState <|-- NormalState
+TaskState <|-- CloseToLimitState
+TaskState <|-- LimitOverState
+
+TodoList o-> "0..n" TodoTask
+TodoTask o-> "1" TaskState
+@enduml
