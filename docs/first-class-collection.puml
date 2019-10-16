@@ -1,0 +1,20 @@
+@startuml First Class Collection Pattern
+class CartItemList {
+  remove(item)
+  add(item)
+
+  buyLater(item)
+  buyNow(item)
+
+  onlyBuyNow(): CartItemList
+
+  totalPrice(): number
+  length(): number
+}
+
+CartView *-> CartItemView
+CartItemList o-> CartItem
+
+CartView --> CartItemList
+CartItemView --> CartItem
+@enduml
