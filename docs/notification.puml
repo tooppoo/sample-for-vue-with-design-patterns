@@ -1,0 +1,15 @@
+@startuml Notification pattern
+
+class Notification {
+  hasError(): boolean
+  addError(error: Error): void
+}
+
+class Error {
+  message: string
+}
+
+Notification o-> "0..n" Error
+
+Component -> Notification
+@enduml

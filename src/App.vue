@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/state-pattern">State Pattern</router-link>
+      <router-link to="/state-pattern">State Pattern</router-link> |
+      <router-link to="/notification-pattern">Notification Pattern</router-link>
     </div>
     <router-view/>
   </div>
