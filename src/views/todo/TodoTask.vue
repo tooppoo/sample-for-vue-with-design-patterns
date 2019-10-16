@@ -8,7 +8,12 @@
     </div>
     <div class="todo-task__limit">
       <div>
-        期限:&nbsp; {{ limit }}
+        期限:&nbsp;
+        <input
+          type="date"
+          :value="limit"
+          @change="onChangeLimit($event.target.value)"
+        >
       </div>
     </div>
   </li>
@@ -45,6 +50,9 @@ export default class TodoTask extends Vue {
 
     return new LimitOverState()
   }
+
+  @Emit('change-limit')
+  onChangeLimit (value: string) { }
 }
 </script>
 
