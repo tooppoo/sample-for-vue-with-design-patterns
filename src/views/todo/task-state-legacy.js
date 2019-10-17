@@ -2,6 +2,10 @@
 export const NormalState = (function () {
   const constructor = function NormalStateConstructor () { }
 
+  constructor.create = function () {
+    return new constructor()
+  }
+
   constructor.prototype.style = {
     'border-color': 'green'
   }
@@ -12,6 +16,9 @@ export const NormalState = (function () {
 export const CloseToLimitState = (function () {
   const constructor = function CloseToLimitStateConstructor () { }
 
+  constructor.create = function () {
+    return new constructor()
+  }
   constructor.prototype.style = {
     'border-color': 'yellow',
     'background-color': 'yellow'
@@ -23,6 +30,9 @@ export const CloseToLimitState = (function () {
 export const LimitOverState = (function () {
   const constructor = function LimitOverStateConstructor () { }
 
+  constructor.create = function () {
+    return new constructor()
+  }
   constructor.prototype.style = {
     'border-color': 'red',
     'background-color': 'red',

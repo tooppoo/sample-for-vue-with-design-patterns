@@ -1,5 +1,9 @@
 
 export class NormalState {
+  static create () {
+    return new NormalState()
+  }
+
   get style () {
     return {
       'border-color': 'green'
@@ -10,6 +14,10 @@ export class NormalState {
   }
 }
 export class CloseToLimitState {
+  static create () {
+    return new CloseToLimitState()
+  }
+
   get style () {
     return {
       'border-color': 'yellow',
@@ -21,6 +29,10 @@ export class CloseToLimitState {
   }
 }
 export class LimitOverState {
+  static create () {
+    return new LimitOverState()
+  }
+
   get style () {
     return {
       'border-color': 'red',

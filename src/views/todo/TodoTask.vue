@@ -45,13 +45,13 @@ export default class TodoTask extends Vue {
     const oneDay = 1000 * 60 * 60 * 24
 
     if (diff > oneDay * 3) {
-      return new NormalState()
+      return NormalState.create()
     }
     if (diff >= 0) {
-      return new CloseToLimitState()
+      return CloseToLimitState.create()
     }
 
-    return new LimitOverState()
+    return LimitOverState.create()
   }
 
   @Emit('change-limit')

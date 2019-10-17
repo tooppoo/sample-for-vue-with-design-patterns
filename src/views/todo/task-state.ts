@@ -5,6 +5,10 @@ export default interface TaskState {
 }
 
 export class NormalState implements TaskState {
+  static create (): TaskState {
+    return new NormalState()
+  }
+
   get style (): object {
     return {
       'border-color': 'green'
@@ -15,6 +19,10 @@ export class NormalState implements TaskState {
   }
 }
 export class CloseToLimitState implements TaskState {
+  static create (): TaskState {
+    return new CloseToLimitState()
+  }
+
   get style (): object {
     return {
       'border-color': 'yellow',
@@ -26,6 +34,10 @@ export class CloseToLimitState implements TaskState {
   }
 }
 export class LimitOverState implements TaskState {
+  static create (): TaskState {
+    return new LimitOverState()
+  }
+
   get style (): object {
     return {
       'border-color': 'red',
