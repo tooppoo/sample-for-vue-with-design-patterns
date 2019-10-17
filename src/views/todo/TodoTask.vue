@@ -23,6 +23,8 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 import TaskState, { NormalState, CloseToLimitState, LimitOverState } from './task-state'
+// import TaskState from './task-state'
+// import { NormalState, CloseToLimitState, LimitOverState } from './task-state-class.js'
 
 @Component
 export default class TodoTask extends Vue {
