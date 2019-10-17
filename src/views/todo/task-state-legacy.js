@@ -9,7 +9,7 @@ export const NormalState = (function () {
   constructor.prototype.style = {
     'border-color': 'green'
   }
-  constructor.prototype.notification = ''
+  constructor.prototype.notification = '[legacy]'
 
   return constructor
 })()
@@ -23,7 +23,7 @@ export const CloseToLimitState = (function () {
     'border-color': 'yellow',
     'background-color': 'yellow'
   }
-  constructor.prototype.notification = '※期限が迫っています'
+  constructor.prototype.notification = '※期限が迫っています[legacy]'
 
   return constructor
 })()
@@ -39,7 +39,7 @@ export const LimitOverState = (function () {
     color: 'white',
     'font-weight': 'bold'
   }
-  constructor.prototype.notification = '※期限が過ぎています'
+  constructor.prototype.notification = '※期限が過ぎています[legacy]'
 
   return constructor
 })()

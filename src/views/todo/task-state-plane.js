@@ -5,7 +5,7 @@ export const NormalState = {
       style: {
         'border-color': 'green'
       },
-      notification: ''
+      notification: '[plane]'
     }
   }
 }
@@ -16,7 +16,7 @@ export const CloseToLimitState = {
         'border-color': 'yellow',
         'background-color': 'yellow'
       },
-      notification: '※期限が迫っています'
+      notification: '※期限が迫っています[plane]'
     }
   }
 }
@@ -29,7 +29,7 @@ export const LimitOverState = {
         color: 'white',
         'font-weight': 'bold'
       },
-      notification: '※期限が過ぎています'
+      notification: '※期限が過ぎています[plane]'
     }
   }
 }

@@ -10,7 +10,7 @@ export class NormalState {
     }
   }
   get notification () {
-    return ''
+    return '[class]'
   }
 }
 export class CloseToLimitState {
@@ -25,7 +25,7 @@ export class CloseToLimitState {
     }
   }
   get notification () {
-    return '※期限が迫っています'
+    return '※期限が迫っています[class]'
   }
 }
 export class LimitOverState {
@@ -42,6 +42,6 @@ export class LimitOverState {
     }
   }
   get notification () {
-    return '※期限が過ぎています'
+    return '※期限が過ぎています[class]'
   }
 }
