@@ -50,6 +50,8 @@ export default class StatePattern extends Vue {
   ]
 
   onChangeLimit (index: number, todo: Todo, newLimit: string) {
+    // 配列を直接保持しているがために発生する、破壊的かつ暗黙的な更新.
+    // cartでは、first class collectionによって解消.
     this.tasks.splice(index, 1, {
       ...todo,
       limit: newLimit
