@@ -1,0 +1,13 @@
+@startuml Strategy Pattern
+class View
+class Button
+
+interface ButtonBehavior
+ButtonBehavior <|.. OnLoading
+ButtonBehavior <|.. OnSuccess
+ButtonBehavior <|.. OnFailed
+
+View *--> "1" Button
+View ..> Button : listen click
+View o-> "1" ButtonBehavior
+@enduml
