@@ -1,4 +1,4 @@
-@startuml Strategy Pattern
+@startuml View And Model
 package View {
   class App
   class "StateList" as VStateList
@@ -13,10 +13,32 @@ package View {
 
 package Model {
   interface ButtonBehavior
+  interface "State" as MState {
+    activated: boolean
+  }
+  class "StateList" as MStateList
+  MStateList o-l-> "n" MState
+
+  AppState o-r-> MStateList
+  Interactor .r.> AppState : create
+  Interactor ..> ButtonBehavior : use
+}
+
+App --> Interactor
+App o--> AppState
+VStateList ..> MStateList
+VState ..> MState
+Button ..> ButtonBehavior
+@enduml
+
+@startuml Strategy Pattern
+package Model {
+  interface ButtonBehavior
   ButtonBehavior <|.. OnLoading
   ButtonBehavior <|.. OnSuccess
   ButtonBehavior <|.. OnFailed
 
+  class "StateList" as MStateList
   interface "State" as MState {
     activated: boolean
   }
@@ -24,19 +46,11 @@ package Model {
   MState <|.. Success
   MState <|.. Failed
 
-  MState *-r-> "1" ButtonBehavior
-
-  class "StateList" as MStateList
+  AppState o-r-> MStateList
   MStateList o-r-> "n" MState
+  MState -r-> "1" ButtonBehavior
 
-  AppState o--> MStateList
   Interactor .r.> AppState : create
-  Interactor .r.> AppState : use
+  Interactor ..> ButtonBehavior : use
 }
-
-App --> Interactor : select state
-App --> Interactor : click button
-App o--> AppState
-VStateList ..> MStateList
-VState ..> MState
 @enduml
