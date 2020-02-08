@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { LoadingState } from './interaction'
+import { LoadingState } from './model/interaction'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({

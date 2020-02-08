@@ -24,13 +24,13 @@ import {
   OnLoading,
   OnSuccess,
   OnFailed
-} from './button-behavior'
+} from './model/button-behavior'
 import {
   LoadingState,
   LoadingStateList,
   State,
   Interactor
-} from './interaction'
+} from './model/interaction'
 
 const interactor = new Interactor()
 

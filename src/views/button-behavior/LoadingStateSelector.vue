@@ -18,7 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { LoadingState } from './interaction'
+import { LoadingState } from './model/interaction'
 
 @Component
 export default class LoadingStateSelector extends Vue {
