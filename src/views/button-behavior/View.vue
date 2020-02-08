@@ -2,16 +2,16 @@
   <div class="loading">
     <h1>Loading Button</h1>
     <loading-state-selector-list
-      :selectors="selectors"
-      :selected="selected"
-      @click="onClick"
+      :state-list="stateList"
+      :selected="state.loadingState"
+      @click="onSelect"
     />
-    <div
+    <button
       class="button"
-      @click="buttonBehavior.onClick"
+      @click="onClick"
     >
-      {{ buttonBehavior.label }}
-    </div>
+      {{ buttonLabel }}
+    </button>
   </div>
 </template>
 
@@ -20,12 +20,19 @@ import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
 import {
-  Selector,
   ButtonBehavior,
   OnLoading,
   OnSuccess,
   OnFailed
 } from './button-behavior'
+import {
+  LoadingState,
+  LoadingStateList,
+  State,
+  Interactor
+} from './interaction'
+
+const interactor = new Interactor()
 
 @Component({
   components: {
@@ -33,38 +40,20 @@ import {
   }
 })
 export default class Loading extends Vue {
-  selected: Selector = this.selectors[0]
+  state: State = interactor.initialize()
 
-  get selectors (): Selector[] {
-    return [
-      {
-        label: 'Loading',
-        value: 'loading'
-      },
-      {
-        label: 'Success',
-        value: 'success'
-      },
-      {
-        label: 'Failed',
-        value: 'failed'
-      }
-    ]
+  get stateList (): LoadingState[] {
+    return LoadingStateList
+  }
+  get buttonLabel (): string {
+    return this.state.behavior.label
   }
 
-  get buttonBehavior (): ButtonBehavior {
-    switch (this.selected.value) {
-      case 'loading':
-        return new OnLoading()
-      case 'success':
-        return new OnSuccess()
-      default:
-        return new OnFailed()
-    }
+  onSelect (selected: LoadingState) {
+    this.state = interactor.selectStatus(selected, this.state)
   }
-
-  onClick (selected: Selector) {
-    this.selected = selected
+  onClick () {
+    this.state.behavior.onClick()
   }
 }
 </script>

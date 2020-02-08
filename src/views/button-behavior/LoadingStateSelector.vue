@@ -7,10 +7,10 @@
     </div>
     <input
       type="radio"
-      :value="selector.value"
-      :name="selector.name"
+      :value="state.value"
+      :name="name"
       :checked="selected"
-      @input="onClick(selector)"
+      @input="onClick(state)"
     >
   </li>
 </template>
@@ -18,19 +18,22 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { Selector } from './button-behavior'
+import { LoadingState } from './interaction'
 
 @Component
 export default class LoadingStateSelector extends Vue {
   @Prop({ required: true })
-  selector!: Selector
+  state!: LoadingState
 
   @Prop({ default: false })
   selected!: boolean
 
-  @Emit('click')
-  onClick (_value: Selector) {
+  @Prop({ required: true })
+  name!: string
 
+  @Emit('click')
+  onClick (value: LoadingState) {
+    return value
   }
 }
 </script>

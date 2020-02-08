@@ -1,10 +1,10 @@
 <template>
   <ul class="loading-state-list">
     <loading-state-selector
-      v-for="s in selectors"
+      v-for="s in stateList"
       :key="s.value"
       name="loading"
-      :selector="s"
+      :state="s"
       :selected="isSelected(s)"
       @click="onClick"
     >
@@ -17,8 +17,8 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
+import { LoadingState } from './interaction'
 import LoadingStateSelector from './LoadingStateSelector.vue'
-import { Selector } from './button-behavior'
 
 @Component({
   components: {
@@ -27,17 +27,17 @@ import { Selector } from './button-behavior'
 })
 export default class LoadingStateSelectorList extends Vue {
   @Prop({ required: true })
-  selectors!: Selector[]
+  stateList!: LoadingState[]
 
   @Prop({ required: true })
-  selected!: Selector
+  selected!: LoadingState
 
-  isSelected (target: Selector): boolean {
+  isSelected (target: LoadingState): boolean {
     return this.selected.value === target.value
   }
 
   @Emit('click')
-  onClick (_selected: Selector) { }
+  onClick (_selected: LoadingState) { }
 }
 </script>
 

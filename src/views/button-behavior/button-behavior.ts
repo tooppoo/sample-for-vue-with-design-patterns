@@ -25,8 +25,3 @@ export class OnFailed implements ButtonBehavior {
     location.reload()
   }
 }
-
-export interface Selector {
-  label: string
-  value: 'loading' | 'success' | 'failed'
-}
