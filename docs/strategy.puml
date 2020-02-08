@@ -1,13 +1,42 @@
 @startuml Strategy Pattern
-class View
-class Button
+package View {
+  class App
+  class "StateList" as VStateList
+  class "State" as VState
+  class Button
 
-interface ButtonBehavior
-ButtonBehavior <|.. OnLoading
-ButtonBehavior <|.. OnSuccess
-ButtonBehavior <|.. OnFailed
+  App o-r-> VStateList
+  VStateList o-r-> "n" VState
 
-View *--> "1" Button
-View ..> Button : listen click
-View o-> "1" ButtonBehavior
+  App o-r-> Button
+}
+
+package Model {
+  interface ButtonBehavior
+  ButtonBehavior <|.. OnLoading
+  ButtonBehavior <|.. OnSuccess
+  ButtonBehavior <|.. OnFailed
+
+  interface "State" as MState {
+    activated: boolean
+  }
+  MState <|.. Loading
+  MState <|.. Success
+  MState <|.. Failed
+
+  MState *-r-> "1" ButtonBehavior
+
+  class "StateList" as MStateList
+  MStateList o-r-> "n" MState
+
+  AppState o--> MStateList
+  Interactor .r.> AppState : create
+  Interactor .r.> AppState : use
+}
+
+App --> Interactor : select state
+App --> Interactor : click button
+App o--> AppState
+VStateList ..> MStateList
+VState ..> MState
 @enduml
