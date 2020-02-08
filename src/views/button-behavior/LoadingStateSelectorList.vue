@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { LoadingState } from './model/state'
+import { State } from './model/state'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({
@@ -27,17 +27,17 @@ import LoadingStateSelector from './LoadingStateSelector.vue'
 })
 export default class LoadingStateSelectorList extends Vue {
   @Prop({ required: true })
-  stateList!: LoadingState[]
+  stateList!: State[]
 
   @Prop({ required: true })
-  selected!: LoadingState
+  selected!: State
 
-  isSelected (target: LoadingState): boolean {
+  isSelected (target: State): boolean {
     return this.selected.value === target.value
   }
 
   @Emit('click')
-  onClick (_selected: LoadingState) { }
+  onClick (_selected: State) { }
 }
 </script>
 

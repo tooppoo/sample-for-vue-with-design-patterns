@@ -19,7 +19,7 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { LoadingStateList, LoadingState } from './model/state'
+import { LoadingStateList, State } from './model/state'
 import {
   ButtonBehavior,
   OnLoading,
@@ -41,14 +41,14 @@ const interactor = new Interactor()
 export default class Loading extends Vue {
   state: AppState = interactor.initialize()
 
-  get stateList (): LoadingState[] {
+  get stateList (): State[] {
     return LoadingStateList
   }
   get buttonLabel (): string {
     return this.state.behavior.label
   }
 
-  onSelect (selected: LoadingState) {
+  onSelect (selected: State) {
     this.state = interactor.selectStatus(selected, this.state)
   }
   onClick () {

@@ -1,15 +1,15 @@
 type LoadingStateValue = 'loading' | 'success' | 'failed'
-export interface LoadingState {
+export interface State {
   readonly label: string
   readonly value: LoadingStateValue
   readonly isActivated: boolean
 
-  activate(): LoadingState
-  inactivate(): LoadingState
+  activate(): State
+  inactivate(): State
 }
 
-class BaseLoadingState implements LoadingState {
-  static initialize (label: string, value: LoadingStateValue): LoadingState {
+class BaseLoadingState implements State {
+  static initialize (label: string, value: LoadingStateValue): State {
     return new BaseLoadingState(label, value, false)
   }
   private constructor (
@@ -18,15 +18,15 @@ class BaseLoadingState implements LoadingState {
     readonly isActivated: boolean
   ) { }
 
-  activate (): LoadingState {
+  activate (): State {
     return new BaseLoadingState(this.label, this.value, true)
   }
-  inactivate (): LoadingState {
+  inactivate (): State {
     return new BaseLoadingState(this.label, this.value, false)
   }
 }
 
-export const LoadingStateList: LoadingState[] = [
+export const LoadingStateList: State[] = [
   BaseLoadingState.initialize('Loading', 'loading').activate(),
   BaseLoadingState.initialize('Success', 'success'),
   BaseLoadingState.initialize('Failed', 'failed')

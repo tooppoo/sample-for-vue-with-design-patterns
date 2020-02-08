@@ -18,12 +18,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { LoadingState } from './model/state'
+import { State } from './model/state'
 
 @Component
 export default class LoadingStateSelector extends Vue {
   @Prop({ required: true })
-  state!: LoadingState
+  state!: State
 
   @Prop({ default: false })
   selected!: boolean
@@ -32,7 +32,7 @@ export default class LoadingStateSelector extends Vue {
   name!: string
 
   @Emit('click')
-  onClick (value: LoadingState) {
+  onClick (value: State) {
     return value
   }
 }
