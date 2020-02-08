@@ -11,6 +11,10 @@ package View {
   App o-r-> Button
 }
 
+package Application {
+  class Interactor
+}
+
 package Model {
   interface ButtonBehavior
   interface "State" as MState {
@@ -19,7 +23,7 @@ package Model {
   class "StateList" as MStateList
   MStateList o-l-> "n" MState
 
-  AppState o-r-> MStateList
+  AppState o--> MStateList
   Interactor .r.> AppState : create
   Interactor ..> ButtonBehavior : use
 }
@@ -34,23 +38,36 @@ Button ..> ButtonBehavior
 @startuml Strategy Pattern
 package Model {
   interface ButtonBehavior
-  ButtonBehavior <|.. OnLoading
-  ButtonBehavior <|.. OnSuccess
-  ButtonBehavior <|.. OnFailed
-
   class "StateList" as MStateList
   interface "State" as MState {
     activated: boolean
   }
-  MState <|.. Loading
-  MState <|.. Success
-  MState <|.. Failed
-
   AppState o-r-> MStateList
   MStateList o-r-> "n" MState
   MState -r-> "1" ButtonBehavior
-
-  Interactor .r.> AppState : create
-  Interactor ..> ButtonBehavior : use
 }
+
+package "Application" as App1 {
+  class Interactor
+}
+package "Application" as App2 {
+  class Loading
+  class Success
+  class Failure
+  
+  class NoAction
+  class Alert
+  class Reload
+}
+
+Interactor .r.> AppState : create
+Interactor ..> ButtonBehavior : use
+
+MState <|.. Loading
+MState <|.. Success
+MState <|.. Failure
+
+ButtonBehavior <|.. NoAction
+ButtonBehavior <|.. Alert
+ButtonBehavior <|.. Reload
 @enduml
