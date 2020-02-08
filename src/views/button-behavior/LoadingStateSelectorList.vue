@@ -1,7 +1,7 @@
 <template>
   <ul class="loading-state-list">
     <loading-state-selector
-      v-for="s in stateList"
+      v-for="s in stateList.toArray()"
       :key="s.value"
       name="loading"
       :state="s"
@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { State } from './model/state'
+import { State, StateList } from './model/state'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({
@@ -27,7 +27,7 @@ import LoadingStateSelector from './LoadingStateSelector.vue'
 })
 export default class LoadingStateSelectorList extends Vue {
   @Prop({ required: true })
-  stateList!: State[]
+  stateList!: StateList
 
   @Prop({ required: true })
   selected!: State

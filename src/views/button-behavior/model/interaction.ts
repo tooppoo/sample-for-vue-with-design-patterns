@@ -8,7 +8,7 @@ export interface AppState {
 
 export class Interactor {
   initialize (): AppState {
-    const selector = LoadingStateList[0]
+    const selector = LoadingStateList.head
 
     return {
       loadingState: selector,
