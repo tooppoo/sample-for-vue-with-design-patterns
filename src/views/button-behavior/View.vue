@@ -19,6 +19,7 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
+import { LoadingStateList, LoadingState } from './model/state'
 import {
   ButtonBehavior,
   OnLoading,
@@ -26,8 +27,6 @@ import {
   OnFailed
 } from './model/button-behavior'
 import {
-  LoadingState,
-  LoadingStateList,
   State,
   Interactor
 } from './model/interaction'
