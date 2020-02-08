@@ -1,29 +1,31 @@
-import { ButtonBehavior, OnLoading, OnSuccess, OnFailed } from '../model/button-behavior'
-import { LoadingStateList, State } from '../model/state'
+import { State, StateList } from '../model/state'
 import { AppState } from '../model/index'
+import { Loading, Success, Failed } from './state'
+import { NoAction, Alert, Reload, Disable } from './button-behavior'
 
 export class Interactor {
   initialize (): AppState {
-    const selector = LoadingStateList.head
+    const states = StateList.create([
+      Loading(Disable(NoAction('Now Loading...'))).activate(),
+      Success(Alert('Success!!')('Click Me!!')),
+      Failed(Reload('Please Retry'))
+    ])
+
+    return { states }
+  }
+  selectStatus (selected: State, { states }: AppState): AppState {
     return {
-      loadingState: selector,
-      behavior: this.selectBehavior(selector)
+      states: states.activate(selected)
     }
   }
-  selectStatus (loadingState: State, state: AppState): AppState {
-    return {
-      loadingState,
-      behavior: this.selectBehavior(loadingState)
+
+  currentState ({ states }: AppState): State {
+    const activated = states.find(s => s.isActivated)
+
+    if (activated === null) {
+      throw new Error('not found activated state')
     }
-  }
-  private selectBehavior (loadingState: State): ButtonBehavior {
-    switch (loadingState.value) {
-      case 'loading':
-        return new OnLoading()
-      case 'success':
-        return new OnSuccess()
-      case 'failed':
-        return new OnFailed()
-    }
+
+    return activated
   }
 }

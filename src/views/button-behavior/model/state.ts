@@ -1,8 +1,11 @@
-type LoadingStateValue = 'loading' | 'success' | 'failed'
+import { ButtonBehavior } from './button-behavior'
+
+export type StateValue = 'loading' | 'success' | 'failed'
 export interface State {
   readonly label: string
-  readonly value: LoadingStateValue
+  readonly value: StateValue
   readonly isActivated: boolean
+  readonly buttonBehavior: ButtonBehavior
 
   activate(): State
   inactivate(): State
@@ -11,43 +14,50 @@ export interface State {
 }
 
 export class StateList {
-  static create (states: readonly [State, ...State[]]): StateList {
+  static create (states: readonly State[]): StateList {
     return new StateList(states)
   }
-  private constructor (private readonly states: readonly [State, ...State[]]) { }
+  private constructor (private readonly states: readonly State[]) { }
 
   get head (): State {
     return this.states[0]
   }
 
-  toArray (): readonly [State, ...State[]] {
+  find (finder: (s: State) => boolean): State | null {
+    return this.states.find(finder) || null
+  }
+
+  activate (target: State): StateList {
+    return new StateList(
+      this.states.map(
+        s => target.equals(s) ? target.activate() : s.inactivate()
+      )
+    )
+  }
+
+  toArray (): readonly State[] {
     return this.states
   }
 }
 
-class BaseLoadingState implements State {
-  static initialize (label: string, value: LoadingStateValue): State {
-    return new BaseLoadingState(label, value, false)
+export class BaseState implements State {
+  static initialize (label: string, value: StateValue, buttonBehavior: ButtonBehavior): State {
+    return new BaseState(label, value, false, buttonBehavior)
   }
   private constructor (
     readonly label: string,
-    readonly value: LoadingStateValue,
-    readonly isActivated: boolean
+    readonly value: StateValue,
+    readonly isActivated: boolean,
+    readonly buttonBehavior: ButtonBehavior
   ) { }
 
   activate (): State {
-    return new BaseLoadingState(this.label, this.value, true)
+    return new BaseState(this.label, this.value, true, this.buttonBehavior)
   }
   inactivate (): State {
-    return new BaseLoadingState(this.label, this.value, false)
+    return new BaseState(this.label, this.value, false, this.buttonBehavior)
   }
   equals (other: State): boolean {
     return this.value === other.value
   }
 }
-
-export const LoadingStateList: StateList = StateList.create([
-  BaseLoadingState.initialize('Loading', 'loading').activate(),
-  BaseLoadingState.initialize('Success', 'success'),
-  BaseLoadingState.initialize('Failed', 'failed')
-])

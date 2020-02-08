@@ -9,7 +9,7 @@
       type="radio"
       :value="state.value"
       :name="name"
-      :checked="selected"
+      :checked="isChecked"
       @input="onClick(state)"
     >
   </li>
@@ -25,15 +25,16 @@ export default class LoadingStateSelector extends Vue {
   @Prop({ required: true })
   state!: State
 
-  @Prop({ default: false })
-  selected!: boolean
-
   @Prop({ required: true })
   name!: string
 
   @Emit('click')
   onClick (value: State) {
     return value
+  }
+
+  get isChecked (): boolean {
+    return this.state.isActivated
   }
 }
 </script>

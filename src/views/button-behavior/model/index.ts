@@ -1,7 +1,5 @@
-import { ButtonBehavior } from './button-behavior'
-import { State } from './state'
+import { StateList } from './state'
 
 export interface AppState {
-  loadingState: State
-  behavior: ButtonBehavior
+  states: StateList
 }

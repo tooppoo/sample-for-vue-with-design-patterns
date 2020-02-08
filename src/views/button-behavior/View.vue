@@ -9,6 +9,7 @@
     <button
       class="button"
       @click="onClick"
+      :disabled="buttonIsDisable"
     >
       {{ buttonLabel }}
     </button>
@@ -17,21 +18,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { LoadingStateList, State, StateList } from './model/state'
-import {
-  ButtonBehavior,
-  OnLoading,
-  OnSuccess,
-  OnFailed
-} from './model/button-behavior'
+import { State, StateList } from './model/state'
 import {
   AppState
 } from './model'
 import { Interactor } from './app/interactor'
-
-const interactor = new Interactor()
+import { ButtonBehavior } from './model/button-behavior'
 
 @Component({
   components: {
@@ -39,20 +33,32 @@ const interactor = new Interactor()
   }
 })
 export default class Loading extends Vue {
-  state: AppState = interactor.initialize()
+  @Prop({ default: () => new Interactor() })
+  interactor!: Interactor
+
+  state: AppState = this.interactor.initialize()
 
   get stateList (): StateList {
-    return LoadingStateList
+    return this.state.states
+  }
+  get currentState (): State {
+    return this.interactor.currentState(this.state)
+  }
+  get buttonBehavior (): ButtonBehavior {
+    return this.currentState.buttonBehavior
   }
   get buttonLabel (): string {
-    return this.state.behavior.label
+    return this.buttonBehavior.label
+  }
+  get buttonIsDisable (): boolean {
+    return this.buttonBehavior.isDisable
   }
 
   onSelect (selected: State) {
-    this.state = interactor.selectStatus(selected, this.state)
+    this.state = this.interactor.selectStatus(selected, this.state)
   }
   onClick () {
-    this.state.behavior.onClick()
+    this.buttonBehavior.onClick()
   }
 }
 </script>
@@ -63,5 +69,9 @@ export default class Loading extends Vue {
   width: 300px;
   padding: 20px;
   margin: auto;
+}
+.button[disabled] {
+  background-color: gray;
+  color: white;
 }
 </style>

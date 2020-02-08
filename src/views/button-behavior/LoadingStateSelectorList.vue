@@ -5,7 +5,6 @@
       :key="s.value"
       name="loading"
       :state="s"
-      :selected="isSelected(s)"
       @click="onClick"
     >
       {{ s.value }}
@@ -28,13 +27,6 @@ import LoadingStateSelector from './LoadingStateSelector.vue'
 export default class LoadingStateSelectorList extends Vue {
   @Prop({ required: true })
   stateList!: StateList
-
-  @Prop({ required: true })
-  selected!: State
-
-  isSelected (target: State): boolean {
-    return this.selected.value === target.value
-  }
 
   @Emit('click')
   onClick (_selected: State) { }
