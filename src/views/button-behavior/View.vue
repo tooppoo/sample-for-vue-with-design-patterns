@@ -27,7 +27,7 @@ import {
   OnFailed
 } from './model/button-behavior'
 import {
-  State,
+  AppState,
   Interactor
 } from './model/interaction'
 
@@ -39,7 +39,7 @@ const interactor = new Interactor()
   }
 })
 export default class Loading extends Vue {
-  state: State = interactor.initialize()
+  state: AppState = interactor.initialize()
 
   get stateList (): LoadingState[] {
     return LoadingStateList

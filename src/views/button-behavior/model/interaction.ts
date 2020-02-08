@@ -1,13 +1,13 @@
 import { ButtonBehavior, OnLoading, OnSuccess, OnFailed } from './button-behavior'
 import { LoadingStateList, LoadingState } from './state'
 
-export interface State {
+export interface AppState {
   loadingState: LoadingState
   behavior: ButtonBehavior
 }
 
 export class Interactor {
-  initialize (): State {
+  initialize (): AppState {
     const selector = LoadingStateList[0]
 
     return {
@@ -15,7 +15,7 @@ export class Interactor {
       behavior: this.selectBehavior(selector)
     }
   }
-  selectStatus (loadingState: LoadingState, state: State): State {
+  selectStatus (loadingState: LoadingState, state: AppState): AppState {
     return {
       loadingState,
       behavior: this.selectBehavior(loadingState)
