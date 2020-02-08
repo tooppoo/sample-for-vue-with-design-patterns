@@ -27,9 +27,9 @@ import {
   OnFailed
 } from './model/button-behavior'
 import {
-  AppState,
-  Interactor
+  AppState
 } from './model'
+import { Interactor } from './app/interactor'
 
 const interactor = new Interactor()
 
