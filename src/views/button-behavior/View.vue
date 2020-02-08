@@ -29,7 +29,7 @@ import {
 import {
   AppState,
   Interactor
-} from './model/interaction'
+} from './model'
 
 const interactor = new Interactor()
 
