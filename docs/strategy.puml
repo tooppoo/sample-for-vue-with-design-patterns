@@ -1,8 +1,8 @@
-@startuml View And Model
+@startuml View And State
 package View {
   class App
-  class "StateList" as VStateList
-  class "State" as VState
+  class "LoadingStateList" as VStateList
+  class "LoadingState" as VState
   class Button
 
   App o-r-> VStateList
@@ -15,12 +15,12 @@ package Controller {
   class Interactor
 }
 
-package Model {
+package State {
   interface ButtonBehavior
-  interface "State" as MState {
+  interface "LoadingState" as MState {
     activated: boolean
   }
-  class "StateList" as MStateList
+  class "LoadingStateList" as MStateList
   MStateList o-l-> "n" MState
 
   AppState o--> MStateList
@@ -36,7 +36,7 @@ Button ..> ButtonBehavior
 @enduml
 
 @startuml Strategy Pattern
-package Model {
+package State {
   interface ButtonBehavior
   class "StateList" as MStateList
   interface "State" as MState {

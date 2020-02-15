@@ -18,18 +18,18 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { State } from './model/state'
+import { LoadingState } from './model/state'
 
 @Component
 export default class LoadingStateSelector extends Vue {
   @Prop({ required: true })
-  state!: State
+  state!: LoadingState
 
   @Prop({ required: true })
   name!: string
 
   @Emit('click')
-  onClick (value: State) {
+  onClick (value: LoadingState) {
     return value
   }
 

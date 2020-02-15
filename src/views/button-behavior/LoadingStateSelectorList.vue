@@ -16,7 +16,7 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { State, StateList } from './model/state'
+import { LoadingState, LoadingStateList } from './model/state'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({
@@ -26,10 +26,10 @@ import LoadingStateSelector from './LoadingStateSelector.vue'
 })
 export default class LoadingStateSelectorList extends Vue {
   @Prop({ required: true })
-  stateList!: StateList
+  stateList!: LoadingStateList
 
   @Emit('click')
-  onClick (_selected: State) { }
+  onClick (_selected: LoadingState) { }
 }
 </script>
 
