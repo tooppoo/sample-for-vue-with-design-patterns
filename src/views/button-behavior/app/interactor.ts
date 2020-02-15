@@ -1,7 +1,6 @@
-import { State, StateList } from '../model/state'
+import { Loading, Success, Failed, State, StateList } from '../model/state'
 import { AppState } from '../model/index'
-import { Loading, Success, Failed } from './state'
-import { NoAction, Alert, Reload, Disable } from './button-behavior'
+import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 
 export class Interactor {
   initialize (): AppState {

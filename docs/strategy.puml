@@ -11,7 +11,7 @@ package View {
   App o-r-> Button
 }
 
-package Application {
+package Controller {
   class Interactor
 }
 
@@ -45,29 +45,20 @@ package Model {
   AppState o-r-> MStateList
   MStateList o-r-> "n" MState
   MState -r-> "1" ButtonBehavior
+
+  MState <|.. Loading
+  MState <|.. Success
+  MState <|.. Failure
+
+  ButtonBehavior <|.. NoAction
+  ButtonBehavior <|.. Alert
+  ButtonBehavior <|.. Reload
 }
 
-package "Application" as App1 {
+package Controller {
   class Interactor
-}
-package "Application" as App2 {
-  class Loading
-  class Success
-  class Failure
-  
-  class NoAction
-  class Alert
-  class Reload
 }
 
 Interactor .r.> AppState : create
 Interactor ..> ButtonBehavior : use
-
-MState <|.. Loading
-MState <|.. Success
-MState <|.. Failure
-
-ButtonBehavior <|.. NoAction
-ButtonBehavior <|.. Alert
-ButtonBehavior <|.. Reload
 @enduml
