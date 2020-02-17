@@ -1,5 +1,5 @@
-import { StateList } from './state'
+import { LoadingStateList } from './state'
 
 export interface AppState {
-  states: StateList
+  states: LoadingStateList
 }

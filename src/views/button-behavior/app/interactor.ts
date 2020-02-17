@@ -1,10 +1,10 @@
-import { Loading, Success, Failed, State, StateList } from '../model/state'
+import { Loading, Success, Failed, LoadingState, LoadingStateList } from '../model/state'
 import { AppState } from '../model/index'
 import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 
 export class Interactor {
   initialize (): AppState {
-    const states = StateList.create([
+    const states = LoadingStateList.create([
       Loading(Disable(NoAction('Now Loading...'))).activate(),
       Success(Alert('Success!!')('Click Me!!')),
       Failed(Reload('Please Retry'))
@@ -12,13 +12,13 @@ export class Interactor {
 
     return { states }
   }
-  selectStatus (selected: State, { states }: AppState): AppState {
+  selectStatus (selected: LoadingState, { states }: AppState): AppState {
     return {
       states: states.activate(selected)
     }
   }
 
-  currentState ({ states }: AppState): State {
+  currentState ({ states }: AppState): LoadingState {
     const activated = states.find(s => s.isActivated)
 
     if (activated === null) {

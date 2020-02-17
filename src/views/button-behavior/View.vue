@@ -20,7 +20,7 @@
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { State, StateList } from './model/state'
+import { LoadingState, LoadingStateList } from './model/state'
 import {
   AppState
 } from './model'
@@ -38,10 +38,10 @@ export default class Loading extends Vue {
 
   state: AppState = this.interactor.initialize()
 
-  get stateList (): StateList {
+  get stateList (): LoadingStateList {
     return this.state.states
   }
-  get currentState (): State {
+  get currentState (): LoadingState {
     return this.interactor.currentState(this.state)
   }
   get buttonBehavior (): ButtonBehavior {
@@ -54,7 +54,7 @@ export default class Loading extends Vue {
     return this.buttonBehavior.isDisable
   }
 
-  onSelect (selected: State) {
+  onSelect (selected: LoadingState) {
     this.state = this.interactor.selectStatus(selected, this.state)
   }
   onClick () {
