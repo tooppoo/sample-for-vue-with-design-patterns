@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import { OnMemoryCartItemListRepository } from './views/cart/repository/on-memory'
 import { FromApiCartItemListRepository } from './views/cart/repository/from-api'
 import { OnMemoryTodoRepository } from './views/todo/repository/on-memory'
+import { FromApiTodoRepository } from './views/todo/repository/from-api'
 
 Vue.use(Router)
 
@@ -17,14 +18,25 @@ export default new Router({
       component: Home
     },
     {
-      path: '/state-pattern',
-      name: 'state',
+      path: '/state-pattern/on-memory',
+      name: 'state-on-memory',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/todo/TodoList.vue'),
       props: () => ({
         repository: new OnMemoryTodoRepository()
+      })
+    },
+    {
+      path: '/state-pattern/from-api',
+      name: 'state-from-api',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/todo/TodoList.vue'),
+      props: () => ({
+        repository: new FromApiTodoRepository()
       })
     },
     {

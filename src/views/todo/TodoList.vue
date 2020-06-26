@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 import TodoTask from './TodoTask.vue'
 import { Todo } from './todo'
 import { TodoRepository } from './repository'
@@ -36,6 +36,7 @@ export default class StatePattern extends Vue {
     this.initialize()
   }
 
+  @Watch('$route')
   async initialize () {
     this.tasks = await this.repository.list()
   }
