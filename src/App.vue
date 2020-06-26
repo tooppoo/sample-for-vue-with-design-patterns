@@ -5,7 +5,12 @@
       <router-link to="/state-pattern">State Pattern</router-link> |
       <router-link to="/strategy-pattern">Strategy Pattern</router-link> |
       <router-link to="/notification-pattern">Notification Pattern</router-link> |
-      <router-link to="/first-class-collection-pattern">First Class Collection Pattern</router-link>
+      <router-link to="/first-class-collection-pattern/on-memory">
+        First Class Collection Pattern (use on memory records)
+      </router-link> |
+      <router-link to="/first-class-collection-pattern/from-api">
+        First Class Collection Pattern (use api response)
+      </router-link>
     </div>
     <router-view/>
   </div>

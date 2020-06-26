@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 import { CartItemList, Item, CartItemListRepository } from './cart-item-list'
 import CartItem from './CartItem.vue'
 
@@ -50,7 +50,12 @@ export default class Cart extends Vue {
 
   private cartItems: CartItemList = CartItemList.initialize()
 
-  async created () {
+  created () {
+    this.initialize()
+  }
+
+  @Watch('$route')
+  async initialize () {
     this.cartItems = await this.repository.list()
   }
 
