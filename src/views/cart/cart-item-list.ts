@@ -3,6 +3,10 @@ export interface CartItemListRepository {
 }
 
 export class CartItemList {
+  static valueOf (items: CartItem[]): CartItemList {
+    return new CartItemList(items)
+  }
+
   static initialize (): CartItemList {
     return new CartItemList([])
   }
