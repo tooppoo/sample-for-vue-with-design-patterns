@@ -16,10 +16,10 @@
       </section>
       <section>
         <router-link to="/first-class-collection-pattern/on-memory">
-          First Class Collection Pattern (use on memory records)
+          First Class Collection Pattern (on memory)
         </router-link> |
         <router-link to="/first-class-collection-pattern/from-api">
-          First Class Collection Pattern (use api response)
+          First Class Collection Pattern (from api)
         </router-link>
       </section>
     </div>
