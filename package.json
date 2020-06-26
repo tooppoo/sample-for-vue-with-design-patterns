@@ -1,6 +1,6 @@
 {
-  "name": "sample-for-vue-with-design-patterns",
-  "version": "0.0.1",
+  "name": "test",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,23 +8,28 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "3.6.5",
-    "vue": "2.6.11",
-    "vue-class-component": "7.2.3",
-    "vue-property-decorator": "9.0.0",
-    "vue-router": "3.3.4"
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-router": "^3.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.4.6",
-    "@vue/cli-plugin-eslint": "4.4.6",
-    "@vue/cli-plugin-typescript": "4.4.6",
-    "@vue/cli-service": "4.4.6",
-    "@vue/eslint-config-standard": "5.1.2",
-    "@vue/eslint-config-typescript": "5.0.2",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.3.1",
-    "eslint-plugin-vue": "6.2.2",
-    "typescript": "3.9.5",
-    "vue-template-compiler": "2.6.11"
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-plugin-eslint": "^4.4.0",
+    "@vue/cli-plugin-typescript": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }

@@ -14,6 +14,7 @@ export class NormalState implements TaskState {
       'border-color': 'green'
     }
   }
+
   get notification (): string {
     return ''
   }
@@ -29,6 +30,7 @@ export class CloseToLimitState implements TaskState {
       'background-color': 'yellow'
     }
   }
+
   get notification (): string {
     return '※期限が迫っています'
   }
@@ -46,6 +48,7 @@ export class LimitOverState implements TaskState {
       'font-weight': 'bold'
     }
   }
+
   get notification (): string {
     return '※期限が過ぎています'
   }

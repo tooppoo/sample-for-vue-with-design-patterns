@@ -95,9 +95,11 @@ export default class ErrorJob extends Vue {
   private handleError (idx: string): boolean {
     return this.enabled.includes(idx)
   }
+
   private disable (targetIdx: string) {
     this.enabled = this.enabled.filter(v => v !== targetIdx)
   }
+
   private enable (targetIdx: string) {
     this.enabled = [
       ...this.enabled,
