@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/state-pattern">State Pattern</router-link> |
-      <router-link to="/strategy-pattern">Strategy Pattern</router-link> |
-      <router-link to="/notification-pattern">Notification Pattern</router-link> |
-      <router-link to="/first-class-collection-pattern/on-memory">
-        First Class Collection Pattern (use on memory records)
-      </router-link> |
-      <router-link to="/first-class-collection-pattern/from-api">
-        First Class Collection Pattern (use api response)
-      </router-link>
+      <section>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/state-pattern">State Pattern</router-link> |
+        <router-link to="/strategy-pattern">Strategy Pattern</router-link> |
+        <router-link to="/notification-pattern">Notification Pattern</router-link> |
+      </section>
+      <section>
+        <router-link to="/first-class-collection-pattern/on-memory">
+          First Class Collection Pattern (use on memory records)
+        </router-link> |
+        <router-link to="/first-class-collection-pattern/from-api">
+          First Class Collection Pattern (use api response)
+        </router-link>
+      </section>
     </div>
     <router-view/>
   </div>
