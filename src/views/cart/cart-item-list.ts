@@ -1,3 +1,6 @@
+export interface CartItemListRepository {
+  list(): Promise<CartItemList>
+}
 
 export class CartItemList {
   static initialize (): CartItemList {
