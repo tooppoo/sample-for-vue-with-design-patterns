@@ -12,6 +12,7 @@ export class Interactor {
 
     return { states }
   }
+
   selectStatus (selected: LoadingState, { states }: AppState): AppState {
     return {
       states: states.activate(selected)

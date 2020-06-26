@@ -9,6 +9,7 @@ export class NormalState {
       'border-color': 'green'
     }
   }
+
   get notification () {
     return '[class]'
   }
@@ -24,6 +25,7 @@ export class CloseToLimitState {
       'background-color': 'yellow'
     }
   }
+
   get notification () {
     return '※期限が迫っています[class]'
   }
@@ -41,6 +43,7 @@ export class LimitOverState {
       'font-weight': 'bold'
     }
   }
+
   get notification () {
     return '※期限が過ぎています[class]'
   }

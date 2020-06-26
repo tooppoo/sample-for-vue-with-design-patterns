@@ -1,7 +1,7 @@
 import { CartItemListRepository, CartItemList } from '../cart-item-list'
 
 export class OnMemoryCartItemListRepository implements CartItemListRepository {
-  async list(): Promise<CartItemList> {
+  async list (): Promise<CartItemList> {
     return CartItemList.initialize()
       .add({
         id: 'cup-noodle',

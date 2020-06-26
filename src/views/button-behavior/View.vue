@@ -41,15 +41,19 @@ export default class Loading extends Vue {
   get stateList (): LoadingStateList {
     return this.state.states
   }
+
   get currentState (): LoadingState {
     return this.interactor.currentState(this.state)
   }
+
   get buttonBehavior (): ButtonBehavior {
     return this.currentState.buttonBehavior
   }
+
   get buttonLabel (): string {
     return this.buttonBehavior.label
   }
+
   get buttonIsDisable (): boolean {
     return this.buttonBehavior.isDisable
   }
@@ -57,6 +61,7 @@ export default class Loading extends Vue {
   onSelect (selected: LoadingState) {
     this.state = this.interactor.selectStatus(selected, this.state)
   }
+
   onClick () {
     this.buttonBehavior.onClick()
   }

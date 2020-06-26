@@ -23,11 +23,13 @@ export class CartItemList {
   find (item: Item): Item | null {
     return this.findBy(cartItem => cartItem.id === item.id)
   }
+
   findBy (finder: (item: Item) => boolean): Item | null {
     const target = this.cartItems.find(itemInCart => finder(itemInCart.item))
 
     return target ? target.item : null
   }
+
   filter (filter: (item: Item) => boolean): CartItemList {
     return this.filterInner(cartItem => filter(cartItem.item))
   }
@@ -44,6 +46,7 @@ export class CartItemList {
       }
     })
   }
+
   remove (item: Item): CartItemList {
     return this.filter(itemInCart => itemInCart.id !== item.id)
   }
@@ -53,6 +56,7 @@ export class CartItemList {
       willPurchase: false
     })
   }
+
   buyNow (item: Item): CartItemList {
     return this.changeState(item, {
       willPurchase: true
@@ -72,6 +76,7 @@ export class CartItemList {
   private toIdList (): string[] {
     return this.cartItems.map(cartItem => cartItem.item.id)
   }
+
   private addInner (cartItem: CartItem): CartItemList {
     return new CartItemList([
       ...this.cartItems,
