@@ -12,7 +12,7 @@
         <input
           type="date"
           :value="limit"
-          @change="onChangeLimit($event.target.value)"
+          @change="onChangeLimit(todo, $event.target.value)"
         >
       </div>
     </div>
@@ -61,7 +61,7 @@ export default class TodoTask extends Vue {
   }
 
   @Emit('change-limit')
-  onChangeLimit (_value: string) { }
+  onChangeLimit (_todo: Todo, _newLimit: string) { }
 }
 </script>
 

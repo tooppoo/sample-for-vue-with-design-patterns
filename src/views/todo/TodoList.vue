@@ -6,7 +6,7 @@
         v-for="task in tasks"
         :key="task.id"
         :todo="task"
-        @change-limit="onChangeLimit(task, $event)"
+        @change-limit="onChangeLimit"
       />
     </ul>
   </div>
