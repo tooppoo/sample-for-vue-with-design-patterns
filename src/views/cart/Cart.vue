@@ -71,16 +71,21 @@ export default class Cart extends Vue {
 
   buyLater (cartItem: CartItem) {
     this.handleUpdateError(async () => {
-      await this.repository.save(cartItem)
+      const updated = cartItem.buyLater()
 
-      this.cartItems = this.cartItems.buyLater(cartItem.item)
+      await this.repository.save(updated)
+
+      this.cartItems = this.cartItems.replace(updated)
     })
   }
 
   buyNow (cartItem: CartItem) {
     this.handleUpdateError(async () => {
-      await this.repository.save(cartItem)
-      this.cartItems = this.cartItems.buyNow(cartItem.item)
+      const updated = cartItem.buyNow()
+
+      await this.repository.save(updated)
+
+      this.cartItems = this.cartItems.replace(updated)
     })
   }
 

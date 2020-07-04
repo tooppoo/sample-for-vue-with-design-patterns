@@ -145,6 +145,24 @@ export class CartItem {
   get id (): string {
     return this.item.id
   }
+
+  buyNow (): CartItem {
+    return CartItem.valueOf({
+      item: this.item,
+      state: {
+        willPurchase: true
+      }
+    })
+  }
+
+  buyLater (): CartItem {
+    return CartItem.valueOf({
+      item: this.item,
+      state: {
+        willPurchase: false
+      }
+    })
+  }
 }
 export interface CartItemState {
   willPurchase: boolean
