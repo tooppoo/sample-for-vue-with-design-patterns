@@ -22,7 +22,17 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
 
   async save (cartItem: CartItem): Promise<void> {
     await fetch(`${this.baseUrl}/${cartItem.id}`, {
-      method: 'PUT'
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: cartItem.id,
+        image_url: cartItem.item.image,
+        product_name: cartItem.item.name,
+        unit_price: cartItem.item.price,
+        will_purchase: cartItem.state.willPurchase
+      })
     })
   }
 
