@@ -28,21 +28,8 @@ export class CartItemList {
     return this.cartItems.length
   }
 
-  filter (filter: (item: Item) => boolean): CartItemList {
-    return this.filterInner(cartItem => filter(cartItem.item))
-  }
-
   onlyWillPurchase (): CartItemList {
     return this.filterInner(cartItem => cartItem.state.willPurchase)
-  }
-
-  add (item: Item): CartItemList {
-    return this.addInner(CartItem.valueOf({
-      item,
-      state: {
-        willPurchase: true
-      }
-    }))
   }
 
   remove (item: Item): CartItemList {
@@ -57,17 +44,14 @@ export class CartItemList {
     return [...this.cartItems] // shallow copy
   }
 
+  private filter (filter: (item: Item) => boolean): CartItemList {
+    return this.filterInner(cartItem => filter(cartItem.item))
+  }
+
   private filterInner (filter: (cartItem: CartItem) => boolean): CartItemList {
     return new CartItemList(
       this.cartItems.filter(filter)
     )
-  }
-
-  private addInner (cartItem: CartItem): CartItemList {
-    return new CartItemList([
-      ...this.cartItems,
-      cartItem
-    ])
   }
 
   private changeState (item: Item, state: CartItemState): CartItemList {
