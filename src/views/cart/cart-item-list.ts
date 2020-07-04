@@ -49,18 +49,6 @@ export class CartItemList {
     return this.filter(itemInCart => itemInCart.id !== item.id)
   }
 
-  buyLater (item: Item): CartItemList {
-    return this.changeState(item, {
-      willPurchase: false
-    })
-  }
-
-  buyNow (item: Item): CartItemList {
-    return this.changeState(item, {
-      willPurchase: true
-    })
-  }
-
   replace (cartItem: CartItem): CartItemList {
     return this.changeState(cartItem.item, cartItem.state)
   }
