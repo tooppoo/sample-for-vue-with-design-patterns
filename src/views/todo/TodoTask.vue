@@ -20,10 +20,10 @@
 </template>
 
 <script lang="ts">
+import { Todo } from '@/views/todo/todo'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 import TaskState, { NormalState, CloseToLimitState, LimitOverState } from './task-state'
-// import TaskState from './task-state'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-class.js'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-legacy.js'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-plane.js'
@@ -31,13 +31,18 @@ import TaskState, { NormalState, CloseToLimitState, LimitOverState } from './tas
 @Component
 export default class TodoTask extends Vue {
   @Prop({ required: true })
-  content!: string
-
-  @Prop({ required: true })
-  limit!: string
+  todo!: Todo
 
   @Prop({ default: () => new Date() })
   baseDate!: Date
+
+  get content (): string {
+    return this.todo.content
+  }
+
+  get limit (): string {
+    return this.todo.limit
+  }
 
   get taskState (): TaskState {
     const limit = new Date(this.limit)
