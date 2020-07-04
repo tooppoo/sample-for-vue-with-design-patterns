@@ -14,6 +14,7 @@ export class FromApiTodoRepository implements TodoRepository {
     const responseTodo: TodoResponse[] = await response.json()
 
     return responseTodo.map(todo => ({
+      id: todo.id,
       content: todo.content,
       limit: todo.limit_at,
       completed: todo.completed

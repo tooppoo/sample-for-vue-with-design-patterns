@@ -3,8 +3,8 @@
     <h1>To-Do List</h1>
     <ul class="todo-list">
       <todo-task
-        v-for="(task, i) in tasks"
-        :key="i"
+        v-for="task in tasks"
+        :key="task.id"
         :content="task.content"
         :limit="task.limit"
         :completed="false"
