@@ -65,7 +65,7 @@ export default class Cart extends Vue {
   remove (cartItem: CartItem) {
     this.handleUpdateError(async () => {
       await this.repository.delete(cartItem)
-      this.cartItems = this.cartItems.remove(cartItem.item)
+      this.cartItems = this.cartItems.remove(cartItem)
     })
   }
 

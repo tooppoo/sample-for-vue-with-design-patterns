@@ -49,6 +49,6 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
   }
 
   async delete (cartItem: CartItem): Promise<void> {
-    this._list.remove(cartItem.item)
+    this._list.remove(cartItem)
   }
 }
