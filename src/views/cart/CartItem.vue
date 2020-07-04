@@ -11,19 +11,19 @@
       class="cart-item__editor"
     >
       <button
-        @click="onRemove(item)"
+        @click="onRemove(cartItem)"
       >
         カートから取り除く
       </button>
       <button
         v-if="willPurchase"
-        @click="onBuyLater(item)"
+        @click="onBuyLater(cartItem)"
       >
         後で買う
       </button>
       <button
         v-else
-        @click="onBuyNow(item)"
+        @click="onBuyNow(cartItem)"
       >
         今すぐ買う
       </button>
@@ -34,15 +34,20 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { Item } from './cart-item-list'
+import { CartItem, Item } from './cart-item-list'
 
 @Component
-export default class CartItem extends Vue {
+export default class CartItemView extends Vue {
   @Prop({ required: true })
-  item!: Item
+  cartItem!: CartItem
 
-  @Prop({ required: true })
-  willPurchase!: boolean
+  get willPurchase (): boolean {
+    return this.cartItem.state.willPurchase
+  }
+
+  get item (): Item {
+    return this.cartItem.item
+  }
 
   get itemImageClass (): object {
     const base = {
@@ -66,13 +71,13 @@ export default class CartItem extends Vue {
   }
 
   @Emit('remove')
-  onRemove (_item: Item) { }
+  onRemove (_item: CartItem) { }
 
   @Emit('buy-later')
-  onBuyLater (_item: Item) { }
+  onBuyLater (_item: CartItem) { }
 
   @Emit('buy-now')
-  onBuyNow (_item: Item) { }
+  onBuyNow (_item: CartItem) { }
 }
 </script>
 

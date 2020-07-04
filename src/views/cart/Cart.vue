@@ -22,9 +22,8 @@
       <cart-item
         class="cart-item-list__item"
         v-for="cartItem in cartItems.toArray()"
-        :key="cartItem.item.id"
-        :item="cartItem.item"
-        :will-purchase="cartItem.state.willPurchase"
+        :key="cartItem.id"
+        :cartItem="cartItem"
         @remove="remove"
         @buy-later="buyLater"
         @buy-now="buyNow"
@@ -36,12 +35,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import { CartItemList, Item, CartItemListRepository } from './cart-item-list'
-import CartItem from './CartItem.vue'
+import { CartItemList, CartItemListRepository, CartItem } from './cart-item-list'
+import CartItemView from './CartItem.vue'
 
 @Component({
   components: {
-    CartItem
+    CartItem: CartItemView
   }
 })
 export default class Cart extends Vue {
@@ -63,16 +62,16 @@ export default class Cart extends Vue {
     return this.cartItems.onlyWillPurchase()
   }
 
-  remove (item: Item) {
-    this.cartItems = this.cartItems.remove(item)
+  remove (cartItem: CartItem) {
+    this.cartItems = this.cartItems.remove(cartItem.item)
   }
 
-  buyLater (item: Item) {
-    this.cartItems = this.cartItems.buyLater(item)
+  buyLater (cartItem: CartItem) {
+    this.cartItems = this.cartItems.buyLater(cartItem.item)
   }
 
-  buyNow (item: Item) {
-    this.cartItems = this.cartItems.buyNow(item)
+  buyNow (cartItem: CartItem) {
+    this.cartItems = this.cartItems.buyNow(cartItem.item)
   }
 }
 </script>
