@@ -9,11 +9,27 @@ interface CartItemResponse {
 }
 
 export class FromApiCartItemListRepository implements CartItemListRepository {
+  constructor (
+    private readonly baseUrl: string = 'http://localhost:8090/cart_items'
+  ) {}
+
   async list (): Promise<CartItemList> {
-    const response = await fetch('http://localhost:8090/cart_items')
+    const response = await fetch(this.baseUrl)
     const responseItems: CartItemResponse[] = await response.json()
 
     return this.convertResponseToDomainObject(responseItems)
+  }
+
+  async save (cartItem: CartItem): Promise<void> {
+    await fetch(`${this.baseUrl}/${cartItem.id}`, {
+      method: 'PUT'
+    })
+  }
+
+  async delete (cartItem: CartItem): Promise<void> {
+    await fetch(`${this.baseUrl}/${cartItem.id}`, {
+      method: 'DELETE'
+    })
   }
 
   private convertResponseToDomainObject (responseItems: CartItemResponse[]): CartItemList {
