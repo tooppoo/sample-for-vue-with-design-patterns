@@ -9,8 +9,12 @@ interface TodoResponse {
 }
 
 export class FromApiTodoRepository implements TodoRepository {
+  constructor (
+    private readonly baseUrl: string = 'http://localhost:8090/todos'
+  ) {}
+
   async list (): Promise<Todo[]> {
-    const response = await fetch('http://localhost:8090/todos')
+    const response = await fetch(this.baseUrl)
     const responseTodo: TodoResponse[] = await response.json()
 
     return responseTodo.map(todo => ({
@@ -19,5 +23,20 @@ export class FromApiTodoRepository implements TodoRepository {
       limit: todo.limit_at,
       completed: todo.completed
     }))
+  }
+
+  async save (todo: Todo): Promise<void> {
+    await fetch(`${this.baseUrl}/${todo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: todo.id,
+        content: todo.content,
+        limit_at: todo.limit,
+        completed: todo.completed
+      })
+    })
   }
 }

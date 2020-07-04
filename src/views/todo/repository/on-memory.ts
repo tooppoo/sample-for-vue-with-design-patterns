@@ -27,5 +27,7 @@ export class OnMemoryTodoRepository implements TodoRepository {
     return this._list
   }
 
+  async save (todo: Todo): Promise<void> {
+    this._list.map(stored => stored.id === todo.id ? todo : stored)
   }
 }
