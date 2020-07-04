@@ -63,15 +63,33 @@ export default class Cart extends Vue {
   }
 
   remove (cartItem: CartItem) {
-    this.cartItems = this.cartItems.remove(cartItem.item)
+    this.handleUpdateError(async () => {
+      await this.repository.delete(cartItem)
+      this.cartItems = this.cartItems.remove(cartItem.item)
+    })
   }
 
   buyLater (cartItem: CartItem) {
-    this.cartItems = this.cartItems.buyLater(cartItem.item)
+    this.handleUpdateError(async () => {
+      await this.repository.save(cartItem)
+
+      this.cartItems = this.cartItems.buyLater(cartItem.item)
+    })
   }
 
   buyNow (cartItem: CartItem) {
-    this.cartItems = this.cartItems.buyNow(cartItem.item)
+    this.handleUpdateError(async () => {
+      await this.repository.save(cartItem)
+      this.cartItems = this.cartItems.buyNow(cartItem.item)
+    })
+  }
+
+  private handleUpdateError (command: () => Promise<void>) {
+    command().catch((error) => {
+      console.error({ error })
+
+      alert(error.toString())
+    })
   }
 }
 </script>
