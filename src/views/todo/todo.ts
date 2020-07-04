@@ -17,4 +17,11 @@ export class Todo {
     readonly limit: string,
     readonly completed: boolean
   ) {}
+
+  changeLimit (limit: string): Todo {
+    return Todo.valueOf({
+      ...this,
+      limit
+    })
+  }
 }
