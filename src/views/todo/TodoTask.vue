@@ -56,7 +56,7 @@ export default class TodoTask extends Vue {
   }
 
   @Emit('change-limit')
-  onChangeLimit (value: string) { }
+  onChangeLimit (_value: string) { }
 }
 </script>
 

@@ -8,7 +8,7 @@
         :content="task.content"
         :limit="task.limit"
         :completed="false"
-        @change-limit="onChangeLimit(i, task, $event)"
+        @change-limit="onChangeLimit(task, $event)"
       />
     </ul>
   </div>
@@ -41,7 +41,7 @@ export default class StatePattern extends Vue {
     this.tasks = await this.repository.list()
   }
 
-  onChangeLimit (index: number, todo: Todo, newLimit: string) {
+  onChangeLimit (todo: Todo, newLimit: string) {
     const updated = todo.changeLimit(newLimit)
 
     this.repository.save(updated).then(() => {
