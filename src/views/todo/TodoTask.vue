@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import { selectTaskState } from '@/views/todo/select-task-state'
 import { Todo } from '@/views/todo/todo'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
@@ -45,19 +46,7 @@ export default class TodoTask extends Vue {
   }
 
   get taskState (): TaskState {
-    const limit = new Date(this.limit)
-
-    const diff = limit.getTime() - this.baseDate.getTime()
-    const oneDay = 1000 * 60 * 60 * 24
-
-    if (diff > oneDay * 3) {
-      return NormalState.create()
-    }
-    if (diff >= 0) {
-      return CloseToLimitState.create()
-    }
-
-    return LimitOverState.create()
+    return selectTaskState(this.todo, this.baseDate)
   }
 
   @Emit('change-limit')
