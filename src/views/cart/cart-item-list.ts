@@ -28,16 +28,6 @@ export class CartItemList {
     return this.cartItems.length
   }
 
-  find (item: Item): Item | null {
-    return this.findBy(cartItem => cartItem.id === item.id)
-  }
-
-  findBy (finder: (item: Item) => boolean): Item | null {
-    const target = this.cartItems.find(itemInCart => finder(itemInCart.item))
-
-    return target ? target.item : null
-  }
-
   filter (filter: (item: Item) => boolean): CartItemList {
     return this.filterInner(cartItem => filter(cartItem.item))
   }
@@ -85,10 +75,6 @@ export class CartItemList {
     )
   }
 
-  private toIdList (): string[] {
-    return this.cartItems.map(cartItem => cartItem.item.id)
-  }
-
   private addInner (cartItem: CartItem): CartItemList {
     return new CartItemList([
       ...this.cartItems,
@@ -96,37 +82,13 @@ export class CartItemList {
     ])
   }
 
-  private orderById (ids: string[]): CartItemList {
+  private changeState (item: Item, state: CartItemState): CartItemList {
     return new CartItemList(
-      ids.reduce<CartItem[]>(
-        (list, nextId) => {
-          const target = this.cartItems.find(cartItem => cartItem.item.id === nextId)
-
-          if (!target) {
-            return list
-          }
-
-          return [...list, target]
-        },
-        []
+      this.cartItems.map(cartItem => cartItem.item.id === item.id
+        ? CartItem.valueOf({ item, state })
+        : cartItem
       )
     )
-  }
-
-  private changeState (item: Item, state: CartItemState): CartItemList {
-    const target = this.find(item)
-
-    if (!target) {
-      return this
-    }
-
-    return this
-      .remove(item)
-      .addInner(CartItem.valueOf({
-        item,
-        state
-      }))
-      .orderById(this.toIdList())
   }
 }
 
