@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "run-p launch api",
+    "serve:init": "run-p launch api:init",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "launch": "vue-cli-service serve",
-    "api": "json-server --watch --port 8090 ./server/db.json"
+    "api": "run-s setup-api launch-api",
+    "api:init": "run-s init-api launch-api",
+    "setup-api": "bash ./bin/setup-server.sh",
+    "init-api": "bash bin/initialize-server.sh",
+    "launch-api": "json-server --watch --port 8090 server/db.json"
   },
   "dependencies": {
     "core-js": "3.6.5",

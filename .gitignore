@@ -6,6 +6,9 @@ node_modules
 .env.local
 .env.*.local
 
+# mock server
+server/db.json
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
