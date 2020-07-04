@@ -43,12 +43,12 @@ export class CartItemList {
   }
 
   add (item: Item): CartItemList {
-    return this.addInner({
+    return this.addInner(CartItem.valueOf({
       item,
       state: {
         willPurchase: true
       }
-    })
+    }))
   }
 
   remove (item: Item): CartItemList {
@@ -65,6 +65,10 @@ export class CartItemList {
     return this.changeState(item, {
       willPurchase: true
     })
+  }
+
+  replace (cartItem: CartItem): CartItemList {
+    return this.changeState(cartItem.item, cartItem.state)
   }
 
   toArray (): CartItem[] {
@@ -114,17 +118,29 @@ export class CartItemList {
 
     return this
       .remove(item)
-      .addInner({
+      .addInner(CartItem.valueOf({
         item,
         state
-      })
+      }))
       .orderById(this.toIdList())
   }
 }
 
-export interface CartItem {
-  item: Item
-  state: CartItemState
+export class CartItem {
+  static valueOf (
+    { item, state }: { item: Item, state: CartItemState }
+  ): CartItem {
+    return new CartItem(item, state)
+  }
+
+  private constructor (
+    readonly item: Item,
+    readonly state: CartItemState
+  ) {}
+
+  get id (): string {
+    return this.item.id
+  }
 }
 export interface CartItemState {
   willPurchase: boolean

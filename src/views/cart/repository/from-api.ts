@@ -1,4 +1,4 @@
-import { CartItemListRepository, CartItemList } from '../cart-item-list'
+import { CartItemListRepository, CartItemList, CartItem } from '../cart-item-list'
 
 interface CartItemResponse {
   id: string
@@ -18,7 +18,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
 
   private convertResponseToDomainObject (responseItems: CartItemResponse[]): CartItemList {
     return CartItemList.valueOf(
-      responseItems.map(item => ({
+      responseItems.map(item => CartItem.valueOf({
         item: {
           id: item.id,
           name: item.product_name,
