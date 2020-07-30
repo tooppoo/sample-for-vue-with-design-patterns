@@ -12,7 +12,7 @@
     >
       <div class="cart-item__editor__unit">
         <span class="cart-item__editor__unit__price">
-          {{ item.price }}円
+          {{ item.unitPrice }}円
         </span>
         &nbsp;×&nbsp;
         <label>

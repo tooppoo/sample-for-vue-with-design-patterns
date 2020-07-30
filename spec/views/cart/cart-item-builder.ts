@@ -1,4 +1,4 @@
-import { CartItem, CartItemCount, CartItemState, Item } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemState, Item, UnitPrice } from '@/views/cart/cart-item-list'
 
 export class CartItemBuilder {
   static create (): CartItemBuilder {
@@ -7,7 +7,7 @@ export class CartItemBuilder {
         id: 'test',
         name: 'てすと',
         image: 'image.png',
-        price: 1000
+        unitPrice: UnitPrice.valueOf(1000)
       },
       CartItemCount.valueOf(1),
       {
@@ -37,7 +37,7 @@ export class CartItemBuilder {
     return new CartItemBuilder(
       {
         ...this.item,
-        price
+        unitPrice: UnitPrice.valueOf(price)
       },
       this.count,
       this.state

@@ -78,7 +78,7 @@ export class CartItem {
   }
 
   get price (): number {
-    return this.item.price * this.count.toNumber()
+    return this.item.unitPrice.applyCount(this.count)
   }
 
   equals (other: CartItem): boolean {
@@ -134,6 +134,30 @@ export class CartItemCount {
   }
 }
 
+export class UnitPrice {
+  static valueOf (value: number): UnitPrice {
+    return new UnitPrice(value)
+  }
+
+  private constructor (private readonly value: number) {
+    if (value < 0) {
+      throw new Error(`price must be >= 0, but ${value}`)
+    }
+  }
+
+  applyCount (count: CartItemCount): number {
+    return this.value * count.toNumber()
+  }
+
+  toNumber (): number {
+    return this.value
+  }
+
+  toString (): string {
+    return `${this.value}`
+  }
+}
+
 export interface CartItemState {
   buyNow: boolean
 }
@@ -142,5 +166,5 @@ export interface Item {
   id: string
   image: string
   name: string
-  price: number
+  unitPrice: UnitPrice
 }

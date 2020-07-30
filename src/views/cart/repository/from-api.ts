@@ -1,4 +1,4 @@
-import { CartItemListRepository, CartItemList, CartItem, CartItemCount } from '../cart-item-list'
+import { CartItemListRepository, CartItemList, CartItem, CartItemCount, UnitPrice } from '../cart-item-list'
 
 interface CartItemResponse {
   id: string
@@ -31,7 +31,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
         id: cartItem.id,
         image_url: cartItem.item.image,
         product_name: cartItem.item.name,
-        unit_price: cartItem.item.price,
+        unit_price: cartItem.item.unitPrice,
         unit_count: cartItem.count.toNumber(),
         will_purchase: cartItem.willBuyNow
       })
@@ -50,7 +50,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
         item: {
           id: item.id,
           name: item.product_name,
-          price: item.unit_price,
+          unitPrice: UnitPrice.valueOf(item.unit_price),
           image: item.image_url
         },
         count: CartItemCount.valueOf(item.unit_count),
