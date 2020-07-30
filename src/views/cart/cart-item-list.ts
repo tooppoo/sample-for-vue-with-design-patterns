@@ -70,7 +70,7 @@ export class CartItem {
   private constructor (
     readonly item: Item,
     readonly count: CartItemCount,
-    readonly state: CartItemState
+    private readonly state: CartItemState
   ) {}
 
   get id (): string {
