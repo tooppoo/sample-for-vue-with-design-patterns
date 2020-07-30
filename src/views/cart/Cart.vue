@@ -8,12 +8,12 @@
       <div
         class="cart-summary__item-count"
       >
-        商品数: {{ cartItemsWillPurchase.length }}点
+        商品数: {{ onlyBuyNow.length }}点
       </div>
       <div
         class="cart-summary__price"
       >
-        合計金額: {{ cartItemsWillPurchase.totalPrice }}円
+        合計金額: {{ onlyBuyNow.totalPrice }}円
       </div>
     </div>
     <ul
@@ -58,8 +58,8 @@ export default class Cart extends Vue {
     this.cartItems = await this.repository.list()
   }
 
-  get cartItemsWillPurchase (): CartItemList {
-    return this.cartItems.onlyWillPurchase()
+  get onlyBuyNow (): CartItemList {
+    return this.cartItems.onlyBuyNow()
   }
 
   remove (cartItem: CartItem) {

@@ -28,7 +28,7 @@ export class CartItemList {
     return this.cartItems.length
   }
 
-  onlyWillPurchase (): CartItemList {
+  onlyBuyNow (): CartItemList {
     return this.filter(cartItem => cartItem.state.willPurchase)
   }
 
