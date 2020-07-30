@@ -36,7 +36,7 @@ export class CartItemList {
   }
 
   onlyBuyNow (): CartItemList {
-    return this.filter(cartItem => cartItem.state.buyNow)
+    return this.filter(cartItem => cartItem.willBuyNow)
   }
 
   remove (target: CartItem): CartItemList {
@@ -85,7 +85,7 @@ export class CartItem {
     return this.id === other.id
   }
 
-  willBuyNow (): boolean {
+  get willBuyNow (): boolean {
     return this.state.buyNow
   }
 

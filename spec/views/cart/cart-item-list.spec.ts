@@ -99,4 +99,48 @@ describe(CartItemList, () => {
       }
     )
   })
+  describe('onlyBuyNow', () => {
+    const builder = CartItemBuilder.create()
+
+    describe.each([
+      [
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ]),
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ])
+      ],
+      [
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyLater(),
+          builder.idIs('item3').build().buyNow()
+        ]),
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ])
+      ],
+      [
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyLater(),
+          builder.idIs('item2').build().buyLater(),
+          builder.idIs('item3').build().buyLater()
+        ]),
+        CartItemList.valueOf([])
+      ]
+    ])(
+      'when list is %s',
+      (list: CartItemList, expected: CartItemList) => {
+        it(`should return ${expected}`, () => {
+          expect(list.onlyBuyNow()).toStrictEqual(expected)
+        })
+      }
+    )
+  })
 })
