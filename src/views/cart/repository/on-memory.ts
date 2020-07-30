@@ -9,7 +9,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: 'カップラーメン',
         price: 180
       },
-      state: { willPurchase: true }
+      state: { buyNow: true }
     }),
     CartItem.valueOf({
       item: {
@@ -18,7 +18,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: '焼き竹輪',
         price: 100
       },
-      state: { willPurchase: true }
+      state: { buyNow: true }
     }),
     CartItem.valueOf({
       item: {
@@ -27,7 +27,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: 'ウィスキー',
         price: 5000
       },
-      state: { willPurchase: true }
+      state: { buyNow: true }
     }),
     CartItem.valueOf({
       item: {
@@ -36,7 +36,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: '味噌汁',
         price: 300
       },
-      state: { willPurchase: true }
+      state: { buyNow: true }
     })
   ])
 

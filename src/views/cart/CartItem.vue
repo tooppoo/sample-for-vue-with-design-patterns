@@ -42,7 +42,7 @@ export default class CartItemView extends Vue {
   cartItem!: CartItem
 
   get willPurchase (): boolean {
-    return this.cartItem.state.willPurchase
+    return this.cartItem.state.buyNow
   }
 
   get item (): Item {

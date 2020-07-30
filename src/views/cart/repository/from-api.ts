@@ -31,7 +31,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
         image_url: cartItem.item.image,
         product_name: cartItem.item.name,
         unit_price: cartItem.item.price,
-        will_purchase: cartItem.state.willPurchase
+        will_purchase: cartItem.state.buyNow
       })
     })
   }
@@ -52,7 +52,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
           image: item.image_url
         },
         state: {
-          willPurchase: item.will_purchase
+          buyNow: item.will_purchase
         }
       }))
     )

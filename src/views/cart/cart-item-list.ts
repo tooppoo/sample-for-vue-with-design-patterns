@@ -29,7 +29,7 @@ export class CartItemList {
   }
 
   onlyBuyNow (): CartItemList {
-    return this.filter(cartItem => cartItem.state.willPurchase)
+    return this.filter(cartItem => cartItem.state.buyNow)
   }
 
   remove (cartItem: CartItem): CartItemList {
@@ -80,7 +80,7 @@ export class CartItem {
     return CartItem.valueOf({
       item: this.item,
       state: {
-        willPurchase: true
+        buyNow: true
       }
     })
   }
@@ -89,13 +89,13 @@ export class CartItem {
     return CartItem.valueOf({
       item: this.item,
       state: {
-        willPurchase: false
+        buyNow: false
       }
     })
   }
 }
 export interface CartItemState {
-  willPurchase: boolean
+  buyNow: boolean
 }
 
 export interface Item {
