@@ -94,6 +94,23 @@ export class CartItem {
     })
   }
 }
+
+export class CartItemCount {
+  static valueOf (value: number): CartItemCount {
+    return new CartItemCount(value)
+  }
+
+  private constructor (private readonly value: number) {
+    if (value < 0) {
+      throw new Error(`cart item count must be >= 0, but ${value}`)
+    }
+  }
+
+  toNumber (): number {
+    return this.value
+  }
+}
+
 export interface CartItemState {
   buyNow: boolean
 }
