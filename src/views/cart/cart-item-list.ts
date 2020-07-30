@@ -24,6 +24,13 @@ export class CartItemList {
     )
   }
 
+  get totalCount (): number {
+    return this.cartItems.reduce(
+      (total: number, cartItem: CartItem) => total + cartItem.count.toNumber(),
+      0
+    )
+  }
+
   get length (): number {
     return this.cartItems.length
   }
