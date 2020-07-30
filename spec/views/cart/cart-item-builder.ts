@@ -52,6 +52,7 @@ export class CartItemBuilder {
   build (): CartItem {
     return CartItem.valueOf({
       item: this.item,
+      count: this.count,
       state: this.state
     })
   }

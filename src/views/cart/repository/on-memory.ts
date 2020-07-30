@@ -1,4 +1,4 @@
-import { CartItemListRepository, CartItemList, CartItem } from '../cart-item-list'
+import { CartItemListRepository, CartItemList, CartItem, CartItemCount } from '../cart-item-list'
 
 export class OnMemoryCartItemListRepository implements CartItemListRepository {
   private _list = CartItemList.valueOf([
@@ -9,6 +9,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: 'カップラーメン',
         price: 180
       },
+      count: CartItemCount.valueOf(1),
       state: { buyNow: true }
     }),
     CartItem.valueOf({
@@ -18,6 +19,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: '焼き竹輪',
         price: 100
       },
+      count: CartItemCount.valueOf(1),
       state: { buyNow: true }
     }),
     CartItem.valueOf({
@@ -27,6 +29,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: 'ウィスキー',
         price: 5000
       },
+      count: CartItemCount.valueOf(1),
       state: { buyNow: true }
     }),
     CartItem.valueOf({
@@ -36,6 +39,7 @@ export class OnMemoryCartItemListRepository implements CartItemListRepository {
         name: '味噌汁',
         price: 300
       },
+      count: CartItemCount.valueOf(1),
       state: { buyNow: true }
     })
   ])

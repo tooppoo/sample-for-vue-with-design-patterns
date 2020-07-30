@@ -1,10 +1,11 @@
-import { CartItemListRepository, CartItemList, CartItem } from '../cart-item-list'
+import { CartItemListRepository, CartItemList, CartItem, CartItemCount } from '../cart-item-list'
 
 interface CartItemResponse {
   id: string
   image_url: string
   product_name: string
   unit_price: number
+  unit_count: number
   will_purchase: boolean
 }
 
@@ -51,6 +52,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
           price: item.unit_price,
           image: item.image_url
         },
+        count: CartItemCount.valueOf(item.unit_count),
         state: {
           buyNow: item.will_purchase
         }

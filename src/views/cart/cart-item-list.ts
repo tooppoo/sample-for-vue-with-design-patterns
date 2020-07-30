@@ -19,7 +19,7 @@ export class CartItemList {
 
   get totalPrice (): number {
     return this.cartItems.reduce(
-      (total: number, cartItem: CartItem) => total + cartItem.item.price,
+      (total: number, cartItem: CartItem) => total + (cartItem.item.price * cartItem.count.toNumber()),
       0
     )
   }
@@ -36,8 +36,10 @@ export class CartItemList {
     return this.filter(stored => stored.id !== cartItem.id)
   }
 
-  replace (cartItem: CartItem): CartItemList {
-    return this.changeState(cartItem.item, cartItem.state)
+  replace (target: CartItem): CartItemList {
+    return new CartItemList(
+      this.cartItems.map(cartItem => cartItem.id === target.id ? target : cartItem)
+    )
   }
 
   toArray (): CartItem[] {
@@ -49,26 +51,18 @@ export class CartItemList {
       this.cartItems.filter(filter)
     )
   }
-
-  private changeState (item: Item, state: CartItemState): CartItemList {
-    return new CartItemList(
-      this.cartItems.map(cartItem => cartItem.item.id === item.id
-        ? CartItem.valueOf({ item, state })
-        : cartItem
-      )
-    )
-  }
 }
 
 export class CartItem {
   static valueOf (
-    { item, state }: { item: Item, state: CartItemState }
+    { item, count, state }: { item: Item, count: CartItemCount, state: CartItemState }
   ): CartItem {
-    return new CartItem(item, state)
+    return new CartItem(item, count, state)
   }
 
   private constructor (
     readonly item: Item,
+    readonly count: CartItemCount,
     readonly state: CartItemState
   ) {}
 
@@ -79,6 +73,7 @@ export class CartItem {
   buyNow (): CartItem {
     return CartItem.valueOf({
       item: this.item,
+      count: this.count,
       state: {
         buyNow: true
       }
@@ -88,6 +83,7 @@ export class CartItem {
   buyLater (): CartItem {
     return CartItem.valueOf({
       item: this.item,
+      count: this.count,
       state: {
         buyNow: false
       }

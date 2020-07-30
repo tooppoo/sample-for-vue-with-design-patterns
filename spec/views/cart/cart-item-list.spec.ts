@@ -13,6 +13,14 @@ describe(CartItemList, () => {
           builder.itemPriceIs(3000).build()
         ]),
         6000
+      ],
+      [
+        CartItemList.valueOf([
+          builder.itemPriceIs(1000).countIs(1).build(),
+          builder.itemPriceIs(2000).countIs(2).build(),
+          builder.itemPriceIs(3000).countIs(3).build()
+        ]),
+        14000
       ]
     ])(
       'when list is %p',
