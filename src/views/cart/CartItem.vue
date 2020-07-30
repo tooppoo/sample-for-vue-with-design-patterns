@@ -2,7 +2,7 @@
   <li
     class="cart-item"
   >
-    {{ item.name }}: {{ item.price }}円
+    {{ item.name }}
     <div
       class="cart-item__image"
       :style="itemImageClass"
@@ -10,15 +10,24 @@
     <div
       class="cart-item__editor"
     >
-      <label class="cart-item__editor__count">
-        <input
-          class="cart-item__editor__count__value"
-          type="number"
-          min="0"
-          :value="count"
-          @change="onChangeCount($event.target.value)"
-        >個
-      </label>
+      <div class="cart-item__editor__unit">
+        <span class="cart-item__editor__unit__price">
+          {{ item.price }}円
+        </span>
+        &nbsp;×&nbsp;
+        <label>
+          <input
+            class="cart-item__editor__unit__count"
+            type="number"
+            min="0"
+            :value="count"
+            @change="onChangeCount($event.target.value)"
+          >個
+        </label>
+      </div>
+      <div class="cart-item__editor__price">
+        計{{ cartItem.price }}円
+      </div>
       <button
         @click="onRemove(cartItem)"
       >
@@ -110,14 +119,19 @@ export default class CartItemView extends Vue {
   list-style: none;
   width: 300px;
 }
-.cart-item__editor__count {
+.cart-item__editor__unit {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
-.cart-item__editor__count__value {
+.cart-item__editor__unit__count {
   font-size: 20px;
-  width: 100px;
+  width: 50px;
+}
+.cart-item__editor__price {
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 button {
   font-size: 20px;
