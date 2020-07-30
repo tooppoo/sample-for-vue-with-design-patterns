@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts">
+import { CartInteraction } from '@/views/cart/interaction'
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { CartItemList, CartItemListRepository, CartItem, CartItemCount } from './cart-item-list'
@@ -50,13 +51,17 @@ export default class Cart extends Vue {
 
   private cartItems: CartItemList = CartItemList.initialize()
 
+  get interaction (): CartInteraction {
+    return CartInteraction.create({ repository: this.repository })
+  }
+
   created () {
     this.initialize()
   }
 
   @Watch('$route')
   async initialize () {
-    this.cartItems = await this.repository.list()
+    this.handleUpdate(() => this.interaction.initialize())
   }
 
   get onlyBuyNow (): CartItemList {
@@ -64,44 +69,26 @@ export default class Cart extends Vue {
   }
 
   remove (cartItem: CartItem) {
-    this.handleUpdateError(async () => {
-      await this.repository.delete(cartItem)
-      this.cartItems = this.cartItems.remove(cartItem)
-    })
+    this.handleUpdate(() => this.interaction.remove(cartItem))
   }
 
   buyLater (cartItem: CartItem) {
-    this.handleUpdateError(async () => {
-      const updated = cartItem.buyLater()
-
-      await this.repository.save(updated)
-
-      this.cartItems = this.cartItems.replace(updated)
-    })
+    this.handleUpdate(() => this.interaction.buyLater(cartItem))
   }
 
   buyNow (cartItem: CartItem) {
-    this.handleUpdateError(async () => {
-      const updated = cartItem.buyNow()
-
-      await this.repository.save(updated)
-
-      this.cartItems = this.cartItems.replace(updated)
-    })
+    this.handleUpdate(() => this.interaction.buyNow(cartItem))
   }
 
   changeCount (cartItem: CartItem, newCount: CartItemCount) {
-    this.handleUpdateError(async () => {
-      const updated = cartItem.changeCount(newCount)
-
-      await this.repository.save(updated)
-
-      this.cartItems = this.cartItems.replace(updated)
-    })
+    this.handleUpdate(() => this.interaction.changeCount(cartItem, newCount))
   }
 
-  private handleUpdateError (command: () => Promise<void>) {
-    command().catch((error) => {
+  private handleUpdate (command: () => Promise<void>) {
+    command().then(() => {
+      // リアクティブ検知のため、更新の都度再代入
+      this.cartItems = this.interaction.cartItemList
+    }).catch((error) => {
       console.error({ error })
 
       alert(error.toString())
