@@ -13,7 +13,7 @@
       <div
         class="cart-summary__price"
       >
-        合計金額: {{ onlyBuyNow.totalPrice }}円
+        合計金額: {{ onlyBuyNow.totalPayment }}円
       </div>
     </div>
     <ul

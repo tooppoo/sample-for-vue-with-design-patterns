@@ -26,7 +26,7 @@ describe(CartItemList, () => {
       'when list is %p',
       (list: CartItemList, expected: number) => {
         it(`should return ${expected}`, () => {
-          expect(list.totalPrice).toBe(expected)
+          expect(list.totalPayment).toBe(expected)
         })
       }
     )

@@ -26,7 +26,7 @@
         </label>
       </div>
       <div class="cart-item__editor__price">
-        計{{ cartItem.price }}円
+        計{{ cartItem.payment }}円
       </div>
       <button
         @click="onRemove(cartItem)"

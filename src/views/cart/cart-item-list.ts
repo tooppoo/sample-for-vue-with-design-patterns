@@ -17,9 +17,9 @@ export class CartItemList {
 
   private constructor (private readonly cartItems: CartItem[]) { }
 
-  get totalPrice (): number {
+  get totalPayment (): number {
     return this.cartItems.reduce(
-      (total: number, cartItem: CartItem) => total + cartItem.price,
+      (total: number, cartItem: CartItem) => total + cartItem.payment,
       0
     )
   }
@@ -77,7 +77,7 @@ export class CartItem {
     return this.item.id
   }
 
-  get price (): number {
+  get payment (): number {
     return this.item.unitPrice.applyCount(this.count)
   }
 
