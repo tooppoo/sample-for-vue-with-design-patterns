@@ -19,7 +19,7 @@ export class CartItemList {
 
   get totalPrice (): number {
     return this.cartItems.reduce(
-      (total: number, cartItem: CartItem) => total + (cartItem.item.price * cartItem.count.toNumber()),
+      (total: number, cartItem: CartItem) => total + cartItem.price,
       0
     )
   }
@@ -39,13 +39,13 @@ export class CartItemList {
     return this.filter(cartItem => cartItem.state.buyNow)
   }
 
-  remove (cartItem: CartItem): CartItemList {
-    return this.filter(stored => stored.id !== cartItem.id)
+  remove (target: CartItem): CartItemList {
+    return this.filter(stored => !stored.equals(target))
   }
 
   replace (target: CartItem): CartItemList {
     return new CartItemList(
-      this.cartItems.map(cartItem => cartItem.id === target.id ? target : cartItem)
+      this.cartItems.map(cartItem => cartItem.equals(target) ? target : cartItem)
     )
   }
 
@@ -75,6 +75,18 @@ export class CartItem {
 
   get id (): string {
     return this.item.id
+  }
+
+  get price (): number {
+    return this.item.price * this.count.toNumber()
+  }
+
+  equals (other: CartItem): boolean {
+    return this.id === other.id
+  }
+
+  willBuyNow (): boolean {
+    return this.state.buyNow
   }
 
   buyNow (): CartItem {

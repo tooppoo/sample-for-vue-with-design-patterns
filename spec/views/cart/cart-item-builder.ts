@@ -22,6 +22,17 @@ export class CartItemBuilder {
     private state: CartItemState
   ) { }
 
+  idIs (id: string): CartItemBuilder {
+    return new CartItemBuilder(
+      {
+        ...this.item,
+        id
+      },
+      this.count,
+      this.state
+    )
+  }
+
   itemPriceIs (price: number): CartItemBuilder {
     return new CartItemBuilder(
       {
@@ -38,14 +49,6 @@ export class CartItemBuilder {
       this.item,
       CartItemCount.valueOf(count),
       this.state
-    )
-  }
-
-  stateIs (state: CartItemState): CartItemBuilder {
-    return new CartItemBuilder(
-      this.item,
-      this.count,
-      state
     )
   }
 

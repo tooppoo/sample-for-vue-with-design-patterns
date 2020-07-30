@@ -1,4 +1,4 @@
-import { CartItemList } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemList } from '@/views/cart/cart-item-list'
 import { CartItemBuilder } from './cart-item-builder'
 
 describe(CartItemList, () => {
@@ -56,6 +56,45 @@ describe(CartItemList, () => {
       (list: CartItemList, expected: number) => {
         it(`should return ${expected}`, () => {
           expect(list.totalCount).toBe(expected)
+        })
+      }
+    )
+  })
+  describe('replace', () => {
+    const builder = CartItemBuilder.create()
+
+    describe.each([
+      [
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ]),
+        builder.idIs('item2').build().buyLater(),
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyLater(),
+          builder.idIs('item3').build().buyNow()
+        ])
+      ],
+      [
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ]),
+        builder.idIs('none').build().buyLater(),
+        CartItemList.valueOf([
+          builder.idIs('item1').build().buyNow(),
+          builder.idIs('item2').build().buyNow(),
+          builder.idIs('item3').build().buyNow()
+        ])
+      ]
+    ])(
+      'when list %s replace by %s',
+      (list: CartItemList, target: CartItem, expected: CartItemList) => {
+        it(`should return ${expected}`, () => {
+          expect(list.replace(target)).toStrictEqual(expected)
         })
       }
     )
