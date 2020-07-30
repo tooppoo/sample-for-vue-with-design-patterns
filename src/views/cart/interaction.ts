@@ -5,7 +5,7 @@ export class CartInteraction {
     return new CartInteraction(repository)
   }
 
-  private list: CartItemList = CartItemList.initialize()
+  private list: CartItemList = CartItemList.empty()
 
   private constructor (private readonly repository: CartItemListRepository) {}
 

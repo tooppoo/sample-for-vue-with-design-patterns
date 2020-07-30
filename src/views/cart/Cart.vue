@@ -49,7 +49,7 @@ export default class Cart extends Vue {
   @Prop({ required: true })
   private readonly repository!: CartItemListRepository
 
-  private cartItems: CartItemList = CartItemList.initialize()
+  private cartItems: CartItemList = this.interaction.cartItemList
 
   get interaction (): CartInteraction {
     return CartInteraction.create({ repository: this.repository })

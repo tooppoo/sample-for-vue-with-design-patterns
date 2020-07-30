@@ -11,7 +11,7 @@ export class CartItemList {
     return new CartItemList(items)
   }
 
-  static initialize (): CartItemList {
+  static empty (): CartItemList {
     return new CartItemList([])
   }
 
