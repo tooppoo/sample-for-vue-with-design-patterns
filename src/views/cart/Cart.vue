@@ -8,7 +8,7 @@
       <div
         class="cart-summary__item-count"
       >
-        商品数: {{ onlyBuyNow.length }}点
+        商品数: {{ onlyBuyNow.totalCount }}点
       </div>
       <div
         class="cart-summary__price"

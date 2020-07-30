@@ -92,8 +92,11 @@ export default class CartItemView extends Vue {
   @Emit('buy-now')
   onBuyNow (_item: CartItem) { }
 
-  onChangeCount (newCount: number) {
-    this.emitChangeCount(this.cartItem, CartItemCount.valueOf(newCount))
+  onChangeCount (newCount: string) {
+    this.emitChangeCount(
+      this.cartItem,
+      CartItemCount.valueOf(parseInt(newCount, 10))
+    )
   }
 
   @Emit('change-count')
