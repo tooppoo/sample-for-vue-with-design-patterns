@@ -63,8 +63,8 @@ export default class CartItemView extends Vue {
     return this.cartItem.willBuyNow
   }
 
-  get count (): number {
-    return this.cartItem.count.toNumber()
+  get count (): CartItemCount {
+    return this.cartItem.count
   }
 
   get item (): Item {

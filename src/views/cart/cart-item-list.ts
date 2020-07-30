@@ -132,6 +132,10 @@ export class CartItemCount {
   toNumber (): number {
     return this.value
   }
+
+  toString (): string {
+    return `${this.value}`
+  }
 }
 
 export class UnitPrice {
