@@ -32,7 +32,7 @@ export class CartInteraction {
   async remove (target: CartItem): Promise<void> {
     await this.repository.delete(target)
 
-    this.list = this.cartItemList.remove(target)
+    this.list = this.list.remove(target)
   }
 
   private async tryUpdate (target: CartItem) {
