@@ -10,6 +10,14 @@
     <div
       class="cart-item__editor"
     >
+      <label class="cart-item__editor__count">
+        <input
+          class="cart-item__editor__count__value"
+          type="number"
+          min="0"
+          :value="count"
+        >個
+      </label>
       <button
         @click="onRemove(cartItem)"
       >
@@ -43,6 +51,10 @@ export default class CartItemView extends Vue {
 
   get willPurchase (): boolean {
     return this.cartItem.willBuyNow
+  }
+
+  get count (): number {
+    return this.cartItem.count.toNumber()
   }
 
   get item (): Item {
@@ -86,6 +98,15 @@ export default class CartItemView extends Vue {
   font-size: 24px;
   list-style: none;
   width: 300px;
+}
+.cart-item__editor__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-item__editor__count__value {
+  font-size: 20px;
+  width: 100px;
 }
 button {
   font-size: 20px;
