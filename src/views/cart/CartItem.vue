@@ -16,6 +16,7 @@
           type="number"
           min="0"
           :value="count"
+          @change="onChangeCount($event.target.value)"
         >個
       </label>
       <button
@@ -42,7 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { CartItem, Item } from './cart-item-list'
+import { CartItem, CartItemCount, Item } from './cart-item-list'
 
 @Component
 export default class CartItemView extends Vue {
@@ -90,6 +91,13 @@ export default class CartItemView extends Vue {
 
   @Emit('buy-now')
   onBuyNow (_item: CartItem) { }
+
+  onChangeCount (newCount: number) {
+    this.emitChangeCount(this.cartItem, CartItemCount.valueOf(newCount))
+  }
+
+  @Emit('change-count')
+  emitChangeCount (_item: CartItem, _newCount: CartItemCount) { }
 }
 </script>
 

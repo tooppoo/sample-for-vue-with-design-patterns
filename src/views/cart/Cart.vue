@@ -27,6 +27,7 @@
         @remove="remove"
         @buy-later="buyLater"
         @buy-now="buyNow"
+        @change-count="changeCount"
       />
     </ul>
   </div>
@@ -35,7 +36,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import { CartItemList, CartItemListRepository, CartItem } from './cart-item-list'
+import { CartItemList, CartItemListRepository, CartItem, CartItemCount } from './cart-item-list'
 import CartItemView from './CartItem.vue'
 
 @Component({
@@ -82,6 +83,16 @@ export default class Cart extends Vue {
   buyNow (cartItem: CartItem) {
     this.handleUpdateError(async () => {
       const updated = cartItem.buyNow()
+
+      await this.repository.save(updated)
+
+      this.cartItems = this.cartItems.replace(updated)
+    })
+  }
+
+  changeCount (cartItem: CartItem, newCount: CartItemCount) {
+    this.handleUpdateError(async () => {
+      const updated = cartItem.changeCount(newCount)
 
       await this.repository.save(updated)
 

@@ -89,6 +89,14 @@ export class CartItem {
     return this.state.buyNow
   }
 
+  changeCount (count: CartItemCount): CartItem {
+    return CartItem.valueOf({
+      item: this.item,
+      count,
+      state: this.state
+    })
+  }
+
   buyNow (): CartItem {
     return CartItem.valueOf({
       item: this.item,

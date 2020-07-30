@@ -32,6 +32,7 @@ export class FromApiCartItemListRepository implements CartItemListRepository {
         image_url: cartItem.item.image,
         product_name: cartItem.item.name,
         unit_price: cartItem.item.price,
+        unit_count: cartItem.count.toNumber(),
         will_purchase: cartItem.willBuyNow
       })
     })
