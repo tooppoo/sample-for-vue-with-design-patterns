@@ -1,4 +1,4 @@
-import { CartItem, CartItemList } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemList } from '@/views/cart/cart-item-list'
 import { CartItemBuilder } from './cart-item-builder'
 
 describe(CartItemList, () => {
@@ -41,7 +41,7 @@ describe(CartItemList, () => {
           builder.countIs(1).build(),
           builder.countIs(1).build()
         ]),
-        3
+        CartItemCount.valueOf(3)
       ],
       [
         CartItemList.valueOf([
@@ -49,13 +49,13 @@ describe(CartItemList, () => {
           builder.countIs(2).build(),
           builder.countIs(3).build()
         ]),
-        6
+        CartItemCount.valueOf(6)
       ]
     ])(
       'when list is %p',
-      (list: CartItemList, expected: number) => {
+      (list: CartItemList, expected: CartItemCount) => {
         it(`should return ${expected}`, () => {
-          expect(list.totalCount).toBe(expected)
+          expect(list.totalCount).toStrictEqual(expected)
         })
       }
     )

@@ -24,10 +24,10 @@ export class CartItemList {
     )
   }
 
-  get totalCount (): number {
+  get totalCount (): CartItemCount {
     return this.cartItems.reduce(
-      (total: number, cartItem: CartItem) => total + cartItem.count.toNumber(),
-      0
+      (total: CartItemCount, cartItem: CartItem) => total.plus(cartItem.count),
+      CartItemCount.zero
     )
   }
 
@@ -119,7 +119,13 @@ export class CartItem {
 }
 
 export class CartItemCount {
+  static readonly zero: CartItemCount = new CartItemCount(0)
+
   static valueOf (value: number): CartItemCount {
+    if (value === 0) {
+      return CartItemCount.zero
+    }
+
     return new CartItemCount(value)
   }
 
@@ -127,6 +133,10 @@ export class CartItemCount {
     if (value < 0) {
       throw new Error(`cart item count must be >= 0, but ${value}`)
     }
+  }
+
+  plus (other: CartItemCount): CartItemCount {
+    return CartItemCount.valueOf(this.value + other.value)
   }
 
   toNumber (): number {
