@@ -5,8 +5,8 @@ import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 export class Interaction {
   initialize (): AppState {
     const states = LoadingStateList.create([
-      WhenLoading(Disable(NoAction('Now WhenLoading...'))).activate(),
-      WhenSuccess(Alert('WhenSuccess!!')('Click Me!!')),
+      WhenLoading(Disable(NoAction('Now Loading...'))).activate(),
+      WhenSuccess(Alert('Success!!')('Click Me!!')),
       WhenFailed(Reload('Please Retry'))
     ])
 

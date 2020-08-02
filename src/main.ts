@@ -11,4 +11,4 @@ Vue.use(VueCompositionAPI)
 new Vue({
   router,
   render: h => h(App)
-}).$mount('#controller')
+}).$mount('#app')
