@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { CartInteraction } from '@/views/cart/interaction'
+import { CartInteraction } from '@/views/cart/controller/interaction'
 import { computed, defineComponent, reactive } from '@vue/composition-api'
 import { PropType } from 'vue'
 import { CartItemListRepository, CartItem, CartItemCount } from './model/cart-item-list'
