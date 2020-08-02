@@ -8,10 +8,6 @@ export class LoadingStateList {
   private constructor (private readonly states: readonly LoadingState[]) {
   }
 
-  get head (): LoadingState {
-    return this.states[0]
-  }
-
   find (finder: (s: LoadingState) => boolean): LoadingState | null {
     return this.states.find(finder) || null
   }
