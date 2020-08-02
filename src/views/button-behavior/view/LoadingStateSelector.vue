@@ -5,20 +5,22 @@
     <div>
       <slot />
     </div>
-    <input
-      type="radio"
-      :value="state.value"
-      :name="name"
-      :checked="isChecked"
-      @input="onClick(state)"
-    >
+    <label>
+      <input
+        type="radio"
+        :value="state.value"
+        :name="name"
+        :checked="isChecked"
+        @input="onClick(state)"
+      >
+    </label>
   </li>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { LoadingState } from './model/state'
+import { LoadingState } from '../model/state'
 
 @Component
 export default class LoadingStateSelector extends Vue {

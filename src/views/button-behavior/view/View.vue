@@ -20,12 +20,12 @@
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { LoadingState, LoadingStateList } from './model/state'
+import { LoadingState, LoadingStateList } from '../model/state'
 import {
   AppState
-} from './model'
-import { Interactor } from './app/interactor'
-import { ButtonBehavior } from './model/button-behavior'
+} from '../model'
+import { Interaction } from '../controller/interaction'
+import { ButtonBehavior } from '../model/button-behavior'
 
 @Component({
   components: {
@@ -33,17 +33,17 @@ import { ButtonBehavior } from './model/button-behavior'
   }
 })
 export default class Loading extends Vue {
-  @Prop({ default: () => new Interactor() })
-  interactor!: Interactor
+  @Prop({ default: () => new Interaction() })
+  interaction!: Interaction
 
-  state: AppState = this.interactor.initialize()
+  state: AppState = this.interaction.initialize()
 
   get stateList (): LoadingStateList {
     return this.state.states
   }
 
   get currentState (): LoadingState {
-    return this.interactor.currentState(this.state)
+    return this.interaction.currentState(this.state)
   }
 
   get buttonBehavior (): ButtonBehavior {
@@ -59,7 +59,7 @@ export default class Loading extends Vue {
   }
 
   onSelect (selected: LoadingState) {
-    this.state = this.interactor.selectStatus(selected, this.state)
+    this.state = this.interaction.selectStatus(selected, this.state)
   }
 
   onClick () {

@@ -2,7 +2,7 @@ import { Loading, Success, Failed, LoadingState, LoadingStateList } from '../mod
 import { AppState } from '../model/index'
 import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 
-export class Interactor {
+export class Interaction {
   initialize (): AppState {
     const states = LoadingStateList.create([
       Loading(Disable(NoAction('Now Loading...'))).activate(),
