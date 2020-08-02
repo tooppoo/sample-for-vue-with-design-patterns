@@ -3,7 +3,7 @@
     <h1>Loading Button</h1>
     <loading-state-selector-list
       :state-list="stateList"
-      :selected="state.loadingState"
+      :selected="state.states"
       @click="onSelect"
     />
     <button
