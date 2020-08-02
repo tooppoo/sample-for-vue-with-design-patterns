@@ -15,9 +15,9 @@ export interface LoadingState {
 type StateFactory = (bb: ButtonBehavior) => LoadingState
 const buildState = (label: string, value: StateValue) => (buttonBehavior: ButtonBehavior) => BaseState.initialize(label, value, buttonBehavior)
 
-export const Loading: StateFactory = buildState('Loading', 'loading')
-export const Success: StateFactory = buildState('Success', 'success')
-export const Failed: StateFactory = buildState('Failed', 'failed')
+export const WhenLoading: StateFactory = buildState('WhenLoading', 'loading')
+export const WhenSuccess: StateFactory = buildState('WhenSuccess', 'success')
+export const WhenFailed: StateFactory = buildState('WhenFailed', 'failed')
 
 export class LoadingStateList {
   static create (states: readonly LoadingState[]): LoadingStateList {

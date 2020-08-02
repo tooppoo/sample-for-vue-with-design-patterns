@@ -1,13 +1,13 @@
-import { Loading, Success, Failed, LoadingState, LoadingStateList } from '../model/state'
+import { WhenLoading, WhenSuccess, WhenFailed, LoadingState, LoadingStateList } from '../model/state'
 import { AppState } from '../model/index'
 import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 
 export class Interaction {
   initialize (): AppState {
     const states = LoadingStateList.create([
-      Loading(Disable(NoAction('Now Loading...'))).activate(),
-      Success(Alert('Success!!')('Click Me!!')),
-      Failed(Reload('Please Retry'))
+      WhenLoading(Disable(NoAction('Now WhenLoading...'))).activate(),
+      WhenSuccess(Alert('WhenSuccess!!')('Click Me!!')),
+      WhenFailed(Reload('Please Retry'))
     ])
 
     return { states }
