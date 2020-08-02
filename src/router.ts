@@ -70,6 +70,17 @@ export default new Router({
       })
     },
     {
+      path: '/first-class-collection-pattern/composition-api',
+      name: 'first-class-collection-on-memory/composition-api',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/cart/CartByCompositionApi.vue'),
+      props: () => ({
+        repository: new OnMemoryCartItemListRepository()
+      })
+    },
+    {
       path: '/strategy-pattern',
       name: 'strategy',
       // route level code-splitting

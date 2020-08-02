@@ -22,6 +22,11 @@
           First Class Collection Pattern (from api)
         </router-link>
       </section>
+        <router-link to="/first-class-collection-pattern/composition-api">
+          First Class Collection Pattern With Composition-Api (on memory)
+        </router-link>
+      <section>
+      </section>
     </div>
     <router-view/>
   </div>
