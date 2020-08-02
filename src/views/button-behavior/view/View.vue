@@ -21,11 +21,8 @@ import { LoadingStateList } from '@/views/button-behavior/model/state-list'
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { LoadingState } from '../model/state'
-import {
-  AppState
-} from '../model'
-import { Interaction } from '../controller/interaction'
+import { LoadingState } from '../model/loadint-state'
+import { AppState, Interaction } from '../controller/interaction'
 import { ButtonBehavior } from '../model/button-behavior'
 
 @Component({

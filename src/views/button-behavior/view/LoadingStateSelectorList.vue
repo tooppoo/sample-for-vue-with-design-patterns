@@ -17,7 +17,7 @@ import { LoadingStateList } from '@/views/button-behavior/model/state-list'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { LoadingState } from '../model/state'
+import { LoadingState } from '../model/loadint-state'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({
