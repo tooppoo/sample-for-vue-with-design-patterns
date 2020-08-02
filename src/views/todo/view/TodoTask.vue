@@ -8,23 +8,25 @@
     </div>
     <div class="todo-task__limit">
       <div>
-        期限:&nbsp;
-        <input
-          type="date"
-          :value="limit"
-          @change="onChangeLimit(todo, $event.target.value)"
-        >
+        <label>
+          期限:&nbsp;
+          <input
+            type="date"
+            :value="limit"
+            @change="onChangeLimit(todo, $event.target.value)"
+          >
+        </label>
       </div>
     </div>
   </li>
 </template>
 
 <script lang="ts">
-import { selectTaskState } from '@/views/todo/select-task-state'
-import { Todo } from '@/views/todo/todo'
+import { selectTaskState } from '@/views/todo/model/select-task-state'
+import { Todo } from '@/views/todo/model/todo'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import TaskState, { NormalState, CloseToLimitState, LimitOverState } from './task-state'
+import TaskState from '../model/task-state'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-class.js'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-legacy.js'
 // import { NormalState, CloseToLimitState, LimitOverState } from './task-state-plane.js'

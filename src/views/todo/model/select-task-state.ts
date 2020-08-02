@@ -1,5 +1,5 @@
-import TaskState, { CloseToLimitState, LimitOverState, NormalState } from '@/views/todo/task-state'
-import { Todo } from '@/views/todo/todo'
+import TaskState, { CloseToLimitState, LimitOverState, NormalState } from '@/views/todo/model/task-state'
+import { Todo } from '@/views/todo/model/todo'
 
 export const selectTaskState = (task: Todo, baseDate: Date): TaskState => {
   const limit = new Date(task.limit)

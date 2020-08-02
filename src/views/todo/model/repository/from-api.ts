@@ -1,5 +1,5 @@
 import { TodoRepository } from '../repository'
-import { Todo } from '@/views/todo/todo'
+import { Todo } from '@/views/todo/model/todo'
 
 interface TodoResponse {
   id: number

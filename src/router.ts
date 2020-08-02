@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import { OnMemoryCartItemListRepository } from './views/cart/model/repository/on-memory'
 import { FromApiCartItemListRepository } from './views/cart/model/repository/from-api'
-import { OnMemoryTodoRepository } from './views/todo/repository/on-memory'
-import { FromApiTodoRepository } from './views/todo/repository/from-api'
+import { OnMemoryTodoRepository } from './views/todo/model/repository/on-memory'
+import { FromApiTodoRepository } from './views/todo/model/repository/from-api'
 
 Vue.use(Router)
 
@@ -23,7 +23,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/todo/TodoList.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/todo/view/TodoList.vue'),
       props: () => ({
         repository: new OnMemoryTodoRepository()
       })
@@ -34,7 +34,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/todo/TodoList.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/todo/view/TodoList.vue'),
       props: () => ({
         repository: new FromApiTodoRepository()
       })

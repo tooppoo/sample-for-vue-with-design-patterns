@@ -16,8 +16,8 @@
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import TodoTask from './TodoTask.vue'
-import { Todo } from './todo'
-import { TodoRepository } from './repository'
+import { Todo } from '../model/todo'
+import { TodoRepository } from '../model/repository'
 
 @Component({
   components: {
