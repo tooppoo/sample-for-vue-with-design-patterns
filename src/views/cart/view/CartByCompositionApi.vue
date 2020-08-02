@@ -35,23 +35,22 @@
 
 <script lang="ts">
 import { CartInteraction } from '@/views/cart/controller/interaction'
-import { computed, defineComponent, reactive } from '@vue/composition-api'
-import { PropType } from 'vue'
+import { computed, defineComponent, PropType, reactive } from '@vue/composition-api'
 import { CartItemListRepository, CartItem, CartItemCount } from '../model/cart-item-list'
 import CartItemView from './CartItem.vue'
 
-type Props = {
-  repository: CartItemListRepository
-}
 export default defineComponent({
   name: 'Cart',
   components: {
     CartItem: CartItemView
   },
   props: {
-    repository: Object as PropType<CartItemListRepository>
-  } as any, // anyにしないと型エラーになる...何かミスってそう
-  setup (props: Props) {
+    repository: {
+      type: Object as PropType<CartItemListRepository>,
+      required: true
+    }
+  },
+  setup (props) {
     const interaction = CartInteraction.create({ repository: props.repository })
     const state = reactive({
       cartItems: interaction.cartItemList
