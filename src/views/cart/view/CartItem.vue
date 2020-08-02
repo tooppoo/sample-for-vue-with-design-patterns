@@ -52,7 +52,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { CartItem, CartItemCount, Item } from './model/cart-item-list'
+import { CartItem, CartItemCount, Item } from '../model/cart-item-list'
 
 @Component
 export default class CartItemView extends Vue {

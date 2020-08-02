@@ -53,7 +53,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/cart/Cart.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/cart/view/Cart.vue'),
       props: () => ({
         repository: new OnMemoryCartItemListRepository()
       })
@@ -64,7 +64,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/cart/Cart.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/cart/view/Cart.vue'),
       props: () => ({
         repository: new FromApiCartItemListRepository()
       })
@@ -75,7 +75,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/cart/CartByCompositionApi.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/cart/view/CartByCompositionApi.vue'),
       props: () => ({
         repository: new OnMemoryCartItemListRepository()
       })
