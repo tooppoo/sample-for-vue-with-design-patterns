@@ -55,6 +55,7 @@ export default defineComponent({
     const state = reactive({
       cartItems: interaction.cartItemList
     })
+    const onlyBuyNow = computed(() => state.cartItems.onlyBuyNow())
 
     const handleUpdate = (command: () => Promise<void>) => {
       command().then(() => {
@@ -75,7 +76,6 @@ export default defineComponent({
 
     const changeCount = (item: CartItem, newCount: CartItemCount) =>
       handleUpdate(() => interaction.changeCount(item, newCount))
-    const onlyBuyNow = computed(() => state.cartItems.onlyBuyNow())
 
     handleUpdate(() => interaction.initialize())
 
