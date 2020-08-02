@@ -1,5 +1,5 @@
 import { ButtonBehavior } from './button-behavior'
-import { LoadingState, StateValue } from './loadint-state'
+import { LoadingState, StateValue } from './loading-state'
 
 export type StateFactory = (bb: ButtonBehavior) => LoadingState
 export const buildState = (label: string, value: StateValue) =>

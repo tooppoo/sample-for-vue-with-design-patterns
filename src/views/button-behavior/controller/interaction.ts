@@ -1,6 +1,6 @@
 import { LoadingStateList } from '@/views/button-behavior/model/state-list'
 import { Alert, Disable, NoAction, Reload } from '../model/button-behavior'
-import { LoadingState, WhenFailed, WhenLoading, WhenSuccess } from '../model/loadint-state'
+import { LoadingState, WhenFailed, WhenLoading, WhenSuccess } from '../model/loading-state'
 
 export interface AppState {
   states: LoadingStateList

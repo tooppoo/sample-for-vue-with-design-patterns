@@ -1,4 +1,4 @@
-import { LoadingState } from '@/views/button-behavior/model/loadint-state'
+import { LoadingState } from '@/views/button-behavior/model/loading-state'
 
 export class LoadingStateList {
   static create (states: readonly LoadingState[]): LoadingStateList {
