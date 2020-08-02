@@ -1,4 +1,5 @@
-import { WhenLoading, WhenSuccess, WhenFailed, LoadingState, LoadingStateList } from '../model/state'
+import { LoadingStateList } from '@/views/button-behavior/model/state-list'
+import { WhenLoading, WhenSuccess, WhenFailed, LoadingState } from '../model/state'
 import { AppState } from '../model/index'
 import { NoAction, Alert, Reload, Disable } from '../model/button-behavior'
 
