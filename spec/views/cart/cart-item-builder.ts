@@ -1,4 +1,4 @@
-import { CartItem, CartItemCount, CartItemState, Item, UnitPrice } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemState, Item, UnitPrice } from '@/views/cart/model/cart-item-list'
 
 export class CartItemBuilder {
   static create (): CartItemBuilder {

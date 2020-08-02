@@ -1,4 +1,4 @@
-import { CartItem, CartItemCount, CartItemList, CartItemListRepository } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemList, CartItemListRepository } from '@/views/cart/model/cart-item-list'
 
 export class CartInteraction {
   static create ({ repository }: { repository: CartItemListRepository }): CartInteraction {

@@ -37,7 +37,7 @@
 import { CartInteraction } from '@/views/cart/interaction'
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import { CartItemList, CartItemListRepository, CartItem, CartItemCount } from './cart-item-list'
+import { CartItemList, CartItemListRepository, CartItem, CartItemCount } from './model/cart-item-list'
 import CartItemView from './CartItem.vue'
 
 @Component({

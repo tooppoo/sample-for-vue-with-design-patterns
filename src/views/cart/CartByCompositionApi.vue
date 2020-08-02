@@ -37,7 +37,7 @@
 import { CartInteraction } from '@/views/cart/interaction'
 import { computed, defineComponent, reactive } from '@vue/composition-api'
 import { PropType } from 'vue'
-import { CartItemListRepository, CartItem, CartItemCount } from './cart-item-list'
+import { CartItemListRepository, CartItem, CartItemCount } from './model/cart-item-list'
 import CartItemView from './CartItem.vue'
 
 type Props = {

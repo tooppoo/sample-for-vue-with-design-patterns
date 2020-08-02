@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import { OnMemoryCartItemListRepository } from './views/cart/repository/on-memory'
-import { FromApiCartItemListRepository } from './views/cart/repository/from-api'
+import { OnMemoryCartItemListRepository } from './views/cart/model/repository/on-memory'
+import { FromApiCartItemListRepository } from './views/cart/model/repository/from-api'
 import { OnMemoryTodoRepository } from './views/todo/repository/on-memory'
 import { FromApiTodoRepository } from './views/todo/repository/from-api'
 

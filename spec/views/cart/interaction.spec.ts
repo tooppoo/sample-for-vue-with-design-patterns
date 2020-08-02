@@ -1,4 +1,4 @@
-import { CartItem, CartItemCount, CartItemList, CartItemListRepository } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemList, CartItemListRepository } from '@/views/cart/model/cart-item-list'
 import { CartInteraction } from '@/views/cart/interaction'
 import { CartItemBuilder } from './cart-item-builder'
 

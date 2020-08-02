@@ -1,4 +1,4 @@
-import { CartItem, CartItemCount, CartItemList } from '@/views/cart/cart-item-list'
+import { CartItem, CartItemCount, CartItemList } from '@/views/cart/model/cart-item-list'
 import { CartItemBuilder } from './cart-item-builder'
 
 describe(CartItemList, () => {
