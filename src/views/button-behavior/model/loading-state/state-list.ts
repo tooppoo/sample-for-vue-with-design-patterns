@@ -6,6 +6,9 @@ export class LoadingStateList {
   }
 
   private constructor (private readonly states: readonly LoadingState[]) {
+    if (states.every(s => !s.isActivated)) {
+      throw new Error('at least one state is activated')
+    }
   }
 
   find (finder: (s: LoadingState) => boolean): LoadingState | null {
