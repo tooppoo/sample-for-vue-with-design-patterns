@@ -17,11 +17,11 @@
 </template>
 
 <script lang="ts">
-import { LoadingStateList } from '@/views/button-behavior/model/state-list'
+import { LoadingStateList } from '@/views/button-behavior/model/loading-state/state-list'
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import LoadingStateSelectorList from './LoadingStateSelectorList.vue'
-import { LoadingState } from '../model/loading-state'
+import { LoadingState } from '../model/loading-state/loading-state'
 import { AppState, Interaction } from '../controller/interaction'
 import { ButtonBehavior } from '../model/button-behavior'
 

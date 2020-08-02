@@ -1,4 +1,4 @@
-import { ButtonBehavior } from './button-behavior'
+import { ButtonBehavior } from '../button-behavior'
 import { LoadingState, StateValue } from './loading-state'
 
 export type StateFactory = (bb: ButtonBehavior) => LoadingState

@@ -1,5 +1,5 @@
-import { buildState, StateFactory } from '@/views/button-behavior/model/state-factory'
-import { ButtonBehavior } from './button-behavior'
+import { buildState, StateFactory } from '@/views/button-behavior/model/loading-state/state-factory'
+import { ButtonBehavior } from '../button-behavior'
 
 export type StateValue = 'loading' | 'success' | 'failed'
 export interface LoadingState {

@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts">
-import { LoadingStateList } from '@/views/button-behavior/model/state-list'
+import { LoadingStateList } from '@/views/button-behavior/model/loading-state/state-list'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import { LoadingState } from '../model/loading-state'
+import { LoadingState } from '../model/loading-state/loading-state'
 import LoadingStateSelector from './LoadingStateSelector.vue'
 
 @Component({
