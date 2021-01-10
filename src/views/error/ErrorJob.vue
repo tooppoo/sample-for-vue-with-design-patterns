@@ -6,12 +6,14 @@
         v-for="v in ['conflict', 'forbidden', 'not-enough', 'not-found', 'timeout']"
         :key="v"
       >
-        エラー:{{ v }}
-        <input
-          type="checkbox"
-          :value="v"
-          @input="onChange"
-        >
+        <label>
+          エラー:{{ v }}
+          <input
+            type="checkbox"
+            :value="v"
+            @input="onChange"
+          >
+        </label>
       </li>
     </ul>
     <button
@@ -36,15 +38,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
 import {
-  Notification,
-  jobConflictedError,
-  jobForbiddenError,
+  jobConflictedError, jobForbiddenError,
   jobNotEnoughParameterError,
   jobNotFoundError,
   jobTimeoutError
+} from '@/views/error/job-error'
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import {
+  Notification
 } from './notification'
 
 interface Event {

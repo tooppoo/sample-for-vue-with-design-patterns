@@ -11,8 +11,8 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'no-unused-vars': 'off',
-    'camelcase': 'off',
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    camelcase: 'off',
+    'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
   parserOptions: {
