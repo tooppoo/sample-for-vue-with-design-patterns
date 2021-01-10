@@ -53,7 +53,7 @@
 import { Product } from '@/views/cart/model/cart-item/product'
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
-import { CartItem, CartItemCount} from '../model/cart-item-list'
+import { CartItem, CartItemCount } from '../model/cart-item-list'
 
 @Component
 export default class CartItemView extends Vue {
