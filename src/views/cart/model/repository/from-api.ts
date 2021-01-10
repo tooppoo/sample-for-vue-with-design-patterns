@@ -1,4 +1,5 @@
-import { CartItemListRepository, CartItemList, CartItem, CartItemCount, UnitPrice } from '../cart-item-list'
+import { CartItemListRepository } from '@/views/cart/model/repository'
+import { CartItemList, CartItem, CartItemCount, UnitPrice } from '../cart-item-list'
 
 interface CartItemResponse {
   id: string

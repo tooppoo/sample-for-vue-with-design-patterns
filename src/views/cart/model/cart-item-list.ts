@@ -1,10 +1,3 @@
-export interface CartItemListRepository {
-  list(): Promise<CartItemList>
-
-  save(cartItem: CartItem): Promise<void>
-
-  delete(cartItem: CartItem): Promise<void>
-}
 
 export class CartItemList {
   static valueOf (items: CartItem[]): CartItemList {

@@ -1,5 +1,6 @@
-import { CartItem, CartItemCount, CartItemList, CartItemListRepository } from '@/views/cart/model/cart-item-list'
+import { CartItem, CartItemCount, CartItemList} from '@/views/cart/model/cart-item-list'
 import { CartInteraction } from '@/views/cart/controller/interaction'
+import { CartItemListRepository } from '@/views/cart/model/repository'
 import { CartItemBuilder } from './cart-item-builder'
 
 const builder = CartItemBuilder.create()

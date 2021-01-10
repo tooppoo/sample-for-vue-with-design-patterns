@@ -13,7 +13,8 @@
     "setup-api": "bash ./bin/setup-server.sh",
     "init-api": "bash bin/initialize-server.sh",
     "launch-api": "json-server --watch --port 8090 server/db.json",
-    "test": "jest"
+    "test": "jest",
+    "ci": "run-p build test"
   },
   "dependencies": {
     "core-js": "3.8.2",
@@ -33,7 +34,7 @@
     "@vue/composition-api": "1.0.0-beta.24",
     "@vue/eslint-config-standard": "6.0.0",
     "@vue/eslint-config-typescript": "7.0.0",
-    "eslint": "6.8.0",
+    "eslint": "7.11.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",

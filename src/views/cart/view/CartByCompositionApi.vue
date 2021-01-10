@@ -35,8 +35,9 @@
 
 <script lang="ts">
 import { CartInteraction } from '@/views/cart/controller/interaction'
+import { CartItemListRepository } from '@/views/cart/model/repository'
 import { computed, defineComponent, PropType, reactive } from '@vue/composition-api'
-import { CartItemListRepository, CartItem, CartItemCount } from '../model/cart-item-list'
+import { CartItem, CartItemCount } from '../model/cart-item-list'
 import CartItemView from './CartItem.vue'
 
 export default defineComponent({
