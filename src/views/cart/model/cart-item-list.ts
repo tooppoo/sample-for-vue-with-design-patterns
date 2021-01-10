@@ -1,4 +1,5 @@
 import { Product } from '@/views/cart/model/cart-item/product'
+import { CartItemState } from '@/views/cart/model/cart-item/state'
 
 export class CartItemList {
   static valueOf (items: CartItem[]): CartItemList {
@@ -165,8 +166,3 @@ export class UnitPrice {
     return `${this.value}`
   }
 }
-
-export interface CartItemState {
-  buyNow: boolean
-}
-

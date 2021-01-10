@@ -1,5 +1,6 @@
-import { CartItem, CartItemCount, CartItemState, UnitPrice } from '@/views/cart/model/cart-item-list'
+import { CartItem, CartItemCount, UnitPrice } from '@/views/cart/model/cart-item-list'
 import { Product } from '@/views/cart/model/cart-item/product'
+import { CartItemState } from '@/views/cart/model/cart-item/state'
 
 export class CartItemBuilder {
   static create (): CartItemBuilder {
