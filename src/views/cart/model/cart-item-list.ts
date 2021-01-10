@@ -1,3 +1,4 @@
+import { Product } from '@/views/cart/model/cart-item/product'
 
 export class CartItemList {
   static valueOf (items: CartItem[]): CartItemList {
@@ -55,13 +56,13 @@ export class CartItemList {
 
 export class CartItem {
   static valueOf (
-    { item, count, state }: { item: Item, count: CartItemCount, state: CartItemState }
+    { item, count, state }: { item: Product, count: CartItemCount, state: CartItemState }
   ): CartItem {
     return new CartItem(item, count, state)
   }
 
   private constructor (
-    readonly item: Item,
+    readonly item: Product,
     readonly count: CartItemCount,
     private readonly state: CartItemState
   ) {}
@@ -169,9 +170,3 @@ export interface CartItemState {
   buyNow: boolean
 }
 
-export interface Item {
-  id: string
-  image: string
-  name: string
-  unitPrice: UnitPrice
-}
