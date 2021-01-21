@@ -13,6 +13,7 @@ module.exports = {
     'no-unused-vars': 'off',
     camelcase: 'off',
     'no-console': 'off',
+    'no-undef': 'off', // avoid the error on "components" key in vue-class-component decorator
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
   parserOptions: {
