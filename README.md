@@ -1,4 +1,5 @@
 # sample-for-vue-with-design-patterns
+![Node.js CI](https://github.com/tooppoo/sample-for-vue-with-design-patterns/workflows/Node.js%20CI/badge.svg)
 
 ## Project setup
 ```
