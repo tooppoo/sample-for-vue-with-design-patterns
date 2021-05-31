@@ -16,6 +16,9 @@
     "test": "jest",
     "ci": "run-p build test lint"
   },
+  "engines": {
+    "node": ">=11"
+  },
   "dependencies": {
     "core-js": "3.13.1",
     "vue": "2.6.12",
