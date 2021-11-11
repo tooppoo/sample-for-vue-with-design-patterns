@@ -17,7 +17,7 @@
     "ci": "run-p build test lint"
   },
   "engines": {
-    "node": "^12 || >=14.0"
+    "node": "^12.0.0 || ^14.0.0 || ^16.0.0"
   },
   "dependencies": {
     "core-js": "3.19.1",
