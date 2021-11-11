@@ -41,4 +41,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - run: yarn install
+    - run: yarn add --peer
     - run: yarn ci
