@@ -5221,10 +5221,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.19.1":
-  version: 3.19.1
-  resolution: "core-js@npm:3.19.1"
-  checksum: 2f669061788dc6fea823f0433d871deeaaaacc7d68ef2748859509522a34df5c83e648c3c6a1993fed0ab188081b3cf32b957b2a1f46156a2b20bd775961ade4
+"core-js@npm:3.38.1":
+  version: 3.38.1
+  resolution: "core-js@npm:3.38.1"
+  checksum: 55703c2f6fcd537e47a5cc83e9dc9884efef61861bbefb4a96a8c95e87956db980ce314628465dd49f14e626c5e633b9e3433f3e4a1f628404a14da420eb2556
   languageName: node
   linkType: hard
 
@@ -14504,7 +14504,7 @@ __metadata:
     "@vue/eslint-config-standard": 6.1.0
     "@vue/eslint-config-typescript": 7.0.0
     autoprefixer: ^10.4.0
-    core-js: 3.19.1
+    core-js: 3.38.1
     eslint: 7.32.0
     eslint-plugin-import: 2.25.3
     eslint-plugin-node: 11.1.0
